@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Phastor custom colors
+				concrete: {
+					light: 'hsl(var(--concrete-light))',
+					medium: 'hsl(var(--concrete-medium))',
+					dark: 'hsl(var(--concrete-dark))'
+				},
+				success: 'hsl(var(--success))',
+				warning: 'hsl(var(--warning))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
