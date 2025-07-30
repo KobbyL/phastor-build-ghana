@@ -9,9 +9,9 @@ const News = () => {
       id: 1,
       title: "Phastor Expands Production Capacity to Meet Growing Demand",
       excerpt: "We're pleased to announce the expansion of our production facility with new state-of-the-art equipment, increasing our daily output by 40%.",
-      content: "Our investment in modern concrete block manufacturing equipment will allow us to better serve the growing construction industry in Ghana while maintaining our high quality standards.",
+      content: "Our investment in modern concrete block manufacturing equipment will allow us to better serve the growing construction industry in Ghana while maintaining our high quality standards. The new automated production line can produce 5,000 blocks per day.",
       date: "2024-01-15",
-      author: "Phastor Team",
+      author: "Phastor Management",
       category: "Company News",
       featured: true,
     },
@@ -19,7 +19,7 @@ const News = () => {
       id: 2,
       title: "5 Essential Tips for Choosing the Right Concrete Blocks",
       excerpt: "Not all concrete blocks are created equal. Here's how to select the best blocks for your construction project.",
-      content: "Understanding the different types of concrete blocks and their applications can save you time and money on your construction project.",
+      content: "Understanding the different types of concrete blocks and their applications can save you time and money on your construction project. Consider factors like load-bearing requirements, environmental conditions, and aesthetic preferences.",
       date: "2024-01-10",
       author: "Engineering Team",
       category: "Tips & Guides",
@@ -29,7 +29,7 @@ const News = () => {
       id: 3,
       title: "Sustainable Construction: Our Environmental Commitment",
       excerpt: "Learn about Phastor's initiatives to reduce environmental impact while producing high-quality concrete products.",
-      content: "We're committed to sustainable manufacturing practices that protect Ghana's environment for future generations.",
+      content: "We're committed to sustainable manufacturing practices that protect Ghana's environment for future generations. Our new recycling program reduces waste by 30% and our solar-powered facility cuts energy consumption.",
       date: "2024-01-05",
       author: "Sustainability Team",
       category: "Sustainability",
@@ -39,7 +39,7 @@ const News = () => {
       id: 4,
       title: "Why Proper Drainage is Critical for Construction Projects",
       excerpt: "Discover how quality U-drains and culverts protect your investment and ensure long-lasting structures.",
-      content: "Proper drainage systems are essential for preventing water damage and ensuring the longevity of construction projects in Ghana's climate.",
+      content: "Proper drainage systems are essential for preventing water damage and ensuring the longevity of construction projects in Ghana's climate. Poor drainage can lead to foundation issues and structural damage.",
       date: "2023-12-28",
       author: "Technical Team",
       category: "Tips & Guides",
@@ -49,7 +49,7 @@ const News = () => {
       id: 5,
       title: "New Partnership with Ghana Standards Authority",
       excerpt: "Phastor strengthens its commitment to quality with enhanced certification processes and regular quality audits.",
-      content: "This partnership ensures our products consistently meet international standards for strength, durability, and safety.",
+      content: "This partnership ensures our products consistently meet international standards for strength, durability, and safety. Regular audits and testing protocols maintain our high-quality standards.",
       date: "2023-12-20",
       author: "Quality Team",
       category: "Company News",
@@ -59,9 +59,29 @@ const News = () => {
       id: 6,
       title: "Understanding Concrete Block Strength Grades",
       excerpt: "A comprehensive guide to concrete block classifications and their appropriate applications in construction.",
-      content: "Learn how to choose the right strength grade for your specific construction needs and local building requirements.",
+      content: "Learn how to choose the right strength grade for your specific construction needs and local building requirements. Different grades are suitable for different structural applications.",
       date: "2023-12-15",
       author: "Engineering Team",
+      category: "Tips & Guides",
+      featured: false,
+    },
+    {
+      id: 7,
+      title: "Phastor Wins Best Concrete Supplier Award 2023",
+      excerpt: "We're honored to receive recognition for excellence in quality and customer service from the Ghana Construction Association.",
+      content: "This award recognizes our commitment to providing superior concrete products and exceptional customer service to contractors and developers across Ghana.",
+      date: "2023-11-30",
+      author: "Phastor Team",
+      category: "Company News",
+      featured: false,
+    },
+    {
+      id: 8,
+      title: "Construction Safety: Working with Concrete Products",
+      excerpt: "Essential safety guidelines for handling and installing concrete blocks, drains, and other concrete products.",
+      content: "Safety is paramount in construction. Follow these guidelines for proper handling, lifting, and installation of concrete products to prevent injuries and ensure project success.",
+      date: "2023-11-15",
+      author: "Safety Team",
       category: "Tips & Guides",
       featured: false,
     },
@@ -72,17 +92,32 @@ const News = () => {
   const tips = [
     {
       title: "Storage Best Practices",
-      description: "Keep concrete blocks dry and stacked properly to maintain quality before use.",
+      description: "Keep concrete blocks dry and stacked properly to maintain quality before use. Store on pallets and cover with waterproof material.",
       icon: <Building className="h-6 w-6" />,
     },
     {
       title: "Quality Inspection",
-      description: "Check blocks for cracks, proper dimensions, and uniform color before installation.",
+      description: "Check blocks for cracks, proper dimensions, and uniform color before installation. Reject any damaged products.",
       icon: <Lightbulb className="h-6 w-6" />,
     },
     {
       title: "Project Planning",
-      description: "Order 5-10% extra blocks to account for breakage and cutting requirements.",
+      description: "Order 5-10% extra blocks to account for breakage and cutting requirements. Plan delivery schedules carefully.",
+      icon: <Calendar className="h-6 w-6" />,
+    },
+    {
+      title: "Installation Tips",
+      description: "Use proper mortar mix ratios and ensure level foundations. Allow adequate curing time for optimal strength.",
+      icon: <Building className="h-6 w-6" />,
+    },
+    {
+      title: "Weather Considerations",
+      description: "Avoid installation during heavy rain. Protect newly laid blocks from extreme weather conditions.",
+      icon: <Lightbulb className="h-6 w-6" />,
+    },
+    {
+      title: "Cost Optimization",
+      description: "Buy in bulk for better pricing. Consider transportation costs when planning delivery locations.",
       icon: <Calendar className="h-6 w-6" />,
     },
   ];
@@ -154,7 +189,7 @@ const News = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tips.map((tip, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">

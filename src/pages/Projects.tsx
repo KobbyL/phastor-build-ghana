@@ -3,6 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Building, Users, MessageCircle } from "lucide-react";
 
+// Import project images
+import projectOfficeImg from "@/assets/project-office.jpg";
+import projectResidentialImg from "@/assets/project-residential.jpg";
+import projectIndustrialImg from "@/assets/project-industrial.jpg";
+
 const Projects = () => {
   const projects = [
     {
@@ -14,6 +19,7 @@ const Projects = () => {
       products: ["Hollow Blocks (8\" & 12\")", "U-Drains (600mm)", "Solid Blocks"],
       client: "Ghana Government",
       status: "Completed",
+      image: projectOfficeImg,
     },
     {
       title: "East Legon Residential Estate",
@@ -24,6 +30,7 @@ const Projects = () => {
       products: ["Hollow Blocks", "Paving Stones", "U-Drains", "Culverts"],
       client: "Prime Properties Ltd",
       status: "Completed",
+      image: projectResidentialImg,
     },
     {
       title: "Tema Industrial Zone Warehouse",
@@ -34,6 +41,7 @@ const Projects = () => {
       products: ["Solid Blocks (12\")", "Heavy-duty U-Drains", "Custom Culverts"],
       client: "Industrial Corp Ghana",
       status: "Completed",
+      image: projectIndustrialImg,
     },
     {
       title: "University of Ghana Student Housing",
@@ -44,6 +52,7 @@ const Projects = () => {
       products: ["Hollow Blocks", "Solid Blocks", "U-Drains", "Paving Stones"],
       client: "University of Ghana",
       status: "Completed",
+      image: projectOfficeImg,
     },
     {
       title: "Kotoka International Airport Expansion",
@@ -54,6 +63,7 @@ const Projects = () => {
       products: ["High-strength Solid Blocks", "Custom Culverts", "Heavy-duty U-Drains"],
       client: "Ghana Airports Company",
       status: "Completed",
+      image: projectIndustrialImg,
     },
     {
       title: "Kumasi Central Market Reconstruction",
@@ -64,6 +74,7 @@ const Projects = () => {
       products: ["Hollow Blocks", "U-Drains", "Paving Stones", "Solid Blocks"],
       client: "Kumasi Metropolitan Assembly",
       status: "Completed",
+      image: projectResidentialImg,
     },
   ];
 
@@ -121,7 +132,15 @@ const Projects = () => {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-shadow overflow-hidden">
+                {/* Project Image */}
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">

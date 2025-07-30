@@ -1,0 +1,179 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { 
+  Ruler, 
+  Shield, 
+  Truck, 
+  MessageCircle, 
+  Download,
+  CheckCircle,
+  Weight
+} from "lucide-react";
+
+interface ProductSpecProps {
+  product: {
+    name: string;
+    description: string;
+    sizes: string[];
+    applications: string[];
+    price: string;
+    features: string[];
+    image: string;
+    category: string;
+  };
+}
+
+const ProductSpec = ({ product }: ProductSpecProps) => {
+  const specifications = {
+    "Hollow Blocks": {
+      strength: "15-25 MPa",
+      density: "1400-1600 kg/m³",
+      waterAbsorption: "< 15%",
+      fireRating: "2+ hours",
+    },
+    "Solid Blocks": {
+      strength: "20-35 MPa", 
+      density: "1800-2200 kg/m³",
+      waterAbsorption: "< 12%",
+      fireRating: "4+ hours",
+    },
+    "U-Drains": {
+      strength: "40+ MPa",
+      loadCapacity: "25-50 kN/m",
+      waterFlow: "Class A",
+      durability: "50+ years",
+    },
+    "Culverts": {
+      strength: "50+ MPa",
+      loadCapacity: "100+ kN/m",
+      crackWidth: "< 0.1mm",
+      durability: "75+ years",
+    },
+    "Paving Stones": {
+      strength: "35+ MPa",
+      slipResistance: "Class 3",
+      abrasionResistance: "Class 4",
+      frostResistance: "F4",
+    },
+    "Interlocking Blocks": {
+      strength: "20-30 MPa",
+      interlockForce: "High",
+      installation: "No mortar",
+      reusability: "100%",
+    },
+  };
+
+  const spec = specifications[product.name as keyof typeof specifications];
+
+  return (
+    <Card className="hover:shadow-lg transition-shadow">
+      <div className="relative">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="w-full h-48 object-cover rounded-t-lg"
+        />
+        <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
+          {product.category}
+        </Badge>
+      </div>
+      
+      <CardContent className="p-6 space-y-4">
+        <div>
+          <h3 className="text-xl font-bold text-primary mb-2">{product.name}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {product.description}
+          </p>
+        </div>
+
+        {/* Technical Specifications */}
+        <div className="bg-concrete-light p-4 rounded-lg">
+          <h4 className="font-semibold mb-3 flex items-center gap-2">
+            <Weight className="h-4 w-4" />
+            Technical Specifications
+          </h4>
+          <div className="grid grid-cols-2 gap-2 text-sm">
+            {Object.entries(spec).map(([key, value]) => (
+              <div key={key} className="flex justify-between">
+                <span className="text-muted-foreground">{key}:</span>
+                <span className="font-medium">{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Available Sizes */}
+        <div>
+          <h4 className="font-semibold mb-2 flex items-center gap-2">
+            <Ruler className="h-4 w-4" />
+            Available Sizes
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {product.sizes.slice(0, 3).map((size, i) => (
+              <Badge key={i} variant="outline" className="text-xs">
+                {size}
+              </Badge>
+            ))}
+            {product.sizes.length > 3 && (
+              <Badge variant="outline" className="text-xs">
+                +{product.sizes.length - 3} more
+              </Badge>
+            )}
+          </div>
+        </div>
+
+        {/* Key Features */}
+        <div>
+          <h4 className="font-semibold mb-2">Key Benefits</h4>
+          <div className="space-y-2">
+            {product.features.slice(0, 3).map((feature, i) => (
+              <div key={i} className="flex items-center gap-2 text-sm">
+                <CheckCircle className="h-3 w-3 text-accent" />
+                <span>{feature}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Applications */}
+        <div>
+          <h4 className="font-semibold mb-2">Common Uses</h4>
+          <div className="text-sm text-muted-foreground">
+            {product.applications.join(", ")}
+          </div>
+        </div>
+
+        {/* Price and Actions */}
+        <div className="border-t pt-4">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <div className="text-lg font-bold text-accent">{product.price}</div>
+              <div className="text-xs text-muted-foreground flex items-center gap-1">
+                <Shield className="h-3 w-3" />
+                Quality Guaranteed
+              </div>
+            </div>
+            <div className="text-xs text-muted-foreground flex items-center gap-1">
+              <Truck className="h-3 w-3" />
+              Free Delivery*
+            </div>
+          </div>
+          
+          <div className="flex gap-2">
+            <Button className="flex-1 gap-2 text-sm">
+              <MessageCircle className="h-4 w-4" />
+              Get Quote
+            </Button>
+            <Button variant="outline" size="sm" className="gap-1">
+              <Download className="h-3 w-3" />
+              Spec Sheet
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default ProductSpec;

@@ -12,6 +12,7 @@ import {
   Shield
 } from "lucide-react";
 import aboutTeamImage from "@/assets/about-team.jpg";
+import factoryInteriorImg from "@/assets/factory-interior.jpg";
 
 const About = () => {
   const values = [
@@ -196,22 +197,73 @@ const About = () => {
       {/* Certifications */}
       <section className="py-20 bg-concrete-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Certifications & Standards
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Our commitment to quality is validated by industry certifications and standards.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+                Modern Manufacturing Facility
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                Our state-of-the-art production facility uses the latest technology 
+                to ensure consistent quality and efficient production of all our 
+                concrete products.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                  <span>Automated production lines for consistent quality</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                  <span>Quality control testing at every stage</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                  <span>Environmentally responsible production</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                  <span>Modern fleet for reliable delivery</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img 
+                src={factoryInteriorImg} 
+                alt="Phastor manufacturing facility"
+                className="rounded-lg shadow-xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-lg shadow-lg">
+                <div className="flex items-center gap-2">
+                  <Factory className="h-6 w-6" />
+                  <div>
+                    <div className="font-bold">ISO Certified</div>
+                    <div className="text-sm">Quality Management</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
-              <div key={index} className="flex items-center gap-3 p-4 bg-card rounded-lg">
-                <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
-                <span className="font-medium">{cert}</span>
-              </div>
-            ))}
+          <div className="mt-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Certifications & Standards
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Our commitment to quality is validated by industry certifications and standards.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {certifications.map((cert, index) => (
+                <div key={index} className="flex items-center gap-3 p-4 bg-card rounded-lg">
+                  <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                  <span className="font-medium">{cert}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

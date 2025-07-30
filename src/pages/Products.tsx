@@ -15,6 +15,15 @@ import {
   Phone
 } from "lucide-react";
 
+// Import product images
+import hollowBlocksImg from "@/assets/hollow-blocks.jpg";
+import solidBlocksImg from "@/assets/solid-blocks.jpg";
+import uDrainsImg from "@/assets/u-drains.jpg";
+import culvertsImg from "@/assets/culverts.jpg";
+import pavingStonesImg from "@/assets/paving-stones.jpg";
+import interlockingBlocksImg from "@/assets/interlocking-blocks.jpg";
+import ProductSpec from "@/components/ProductSpec";
+
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -34,6 +43,7 @@ const Products = () => {
       applications: ["Wall construction", "Partition walls", "Load-bearing walls"],
       price: "From GHS 2.50 per block",
       features: ["Lightweight", "High strength", "Thermal insulation", "Sound dampening"],
+      image: hollowBlocksImg,
     },
     {
       category: "blocks",
@@ -43,6 +53,7 @@ const Products = () => {
       applications: ["Foundation walls", "Retaining walls", "Structural walls"],
       price: "From GHS 3.00 per block",
       features: ["Maximum strength", "Weather resistant", "Fire resistant", "Long-lasting"],
+      image: solidBlocksImg,
     },
     {
       category: "drainage",
@@ -52,6 +63,7 @@ const Products = () => {
       applications: ["Road drainage", "Residential drainage", "Commercial drainage"],
       price: "From GHS 45.00 per meter",
       features: ["Easy installation", "Durable", "Smooth water flow", "Cost-effective"],
+      image: uDrainsImg,
     },
     {
       category: "drainage",
@@ -61,6 +73,7 @@ const Products = () => {
       applications: ["Road crossings", "Bridge drainage", "Large infrastructure"],
       price: "From GHS 350.00 per meter",
       features: ["Heavy-duty", "Load-bearing", "Weather resistant", "Long service life"],
+      image: culvertsImg,
     },
     {
       category: "paving",
@@ -70,6 +83,7 @@ const Products = () => {
       applications: ["Driveways", "Walkways", "Patios", "Public spaces"],
       price: "From GHS 18.00 per m²",
       features: ["Non-slip surface", "Weather resistant", "Easy maintenance", "Attractive finish"],
+      image: pavingStonesImg,
     },
     {
       category: "blocks",
@@ -79,6 +93,7 @@ const Products = () => {
       applications: ["Quick construction", "Temporary structures", "Emergency housing"],
       price: "From GHS 3.50 per block",
       features: ["No mortar needed", "Quick installation", "Reusable", "Cost-effective"],
+      image: interlockingBlocksImg,
     },
   ];
 
@@ -146,69 +161,7 @@ const Products = () => {
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl text-primary">{product.name}</CardTitle>
-                    <Badge variant="secondary">{product.category}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">{product.description}</p>
-                  
-                  <div>
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
-                      <Ruler className="h-4 w-4" />
-                      Available Sizes
-                    </h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {product.sizes.map((size, i) => (
-                        <li key={i}>• {size}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-2">Key Features</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.features.map((feature, i) => (
-                        <Badge key={i} variant="outline" className="text-xs">
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-2">Common Applications</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {product.applications.map((app, i) => (
-                        <li key={i}>• {app}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="border-t pt-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-lg font-semibold text-accent">{product.price}</span>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                        <Shield className="h-4 w-4" />
-                        Quality Assured
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button className="flex-1 gap-2">
-                        <MessageCircle className="h-4 w-4" />
-                        Get Quote
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Phone className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <ProductSpec key={index} product={product} />
             ))}
           </div>
         </div>
