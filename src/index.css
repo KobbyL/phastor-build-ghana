@@ -18,20 +18,20 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 15% 15%;
 
-    /* Primary: Bold red */
-    --primary: 0 75% 45%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary: Professional blue */
+    --primary: 217 91% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Light red tint */
-    --secondary: 0 10% 90%;
-    --secondary-foreground: 0 75% 25%;
+    /* Secondary: Light neutral */
+    --secondary: 210 10% 90%;
+    --secondary-foreground: 210 15% 25%;
 
-    --muted: 0 5% 92%;
-    --muted-foreground: 0 10% 45%;
+    --muted: 210 10% 92%;
+    --muted-foreground: 210 10% 45%;
 
-    /* Accent: Vibrant red */
-    --accent: 0 85% 55%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent: Vibrant blue */
+    --accent: 217 91% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
