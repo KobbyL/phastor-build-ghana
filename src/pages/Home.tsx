@@ -76,45 +76,65 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Trust Indicators - Reviews Section */}
-      <section className="py-16 bg-primary">
+      {/* Customer Logos Section */}
+      <section className="py-16 bg-primary overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">
-              Our company is a top-rated service provider
+          <div className="text-center text-white mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Trusted by leading construction companies
             </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="flex flex-col items-center space-y-2">
-                <Star className="h-12 w-12 text-yellow-400 mb-2" />
-                <div className="flex text-yellow-400 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-                <div className="text-2xl font-bold">4.8 on Google</div>
+            <p className="text-lg opacity-90">
+              Join hundreds of satisfied customers across Ghana
+            </p>
+          </div>
+          
+          {/* Infinite scrolling logos */}
+          <div className="relative">
+            <div className="flex animate-[scroll_30s_linear_infinite] space-x-16">
+              {/* First set of logos */}
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">ASHANTI GOLD</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">COCOA BOARD</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">GHANA HIGHWAYS</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">TEMA STEEL</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">ACCRA MALL</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">GOLDEN TULIP</div>
               </div>
               
-              <div className="flex flex-col items-center space-y-2">
-                <Star className="h-12 w-12 text-yellow-400 mb-2" />
-                <div className="flex text-yellow-400 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-                <div className="text-2xl font-bold">4.9 on Facebook</div>
+              {/* Duplicate set for seamless loop */}
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">ASHANTI GOLD</div>
               </div>
-              
-              <div className="flex flex-col items-center space-y-2">
-                <Star className="h-12 w-12 text-yellow-400 mb-2" />
-                <div className="flex text-yellow-400 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-                <div className="text-2xl font-bold">4.7 on Reviews.io</div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">COCOA BOARD</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">GHANA HIGHWAYS</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">TEMA STEEL</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">ACCRA MALL</div>
+              </div>
+              <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]">
+                <div className="text-white text-xl font-bold">GOLDEN TULIP</div>
               </div>
             </div>
+            
+            {/* Gradient overlays for smooth edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-primary to-transparent pointer-events-none z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-primary to-transparent pointer-events-none z-10"></div>
           </div>
         </div>
       </section>
