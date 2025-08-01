@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Ruler, 
   Shield, 
@@ -8,23 +10,28 @@ import {
   MessageCircle, 
   Download,
   CheckCircle,
-  Weight
+  Weight,
+  ShoppingCart
 } from "lucide-react";
 
 interface ProductSpecProps {
   product: {
+    id: string;
     name: string;
     description: string;
     sizes: string[];
     applications: string[];
-    price: string;
+    price: number;
+    priceText: string;
     features: string[];
     image: string;
     category: string;
   };
+  onAddToCart?: (product: any, size?: string) => void;
 }
 
-const ProductSpec = ({ product }: ProductSpecProps) => {
+const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const specifications = {
     "Hollow Blocks": {
       strength: "15-25 MPa",
@@ -148,7 +155,7 @@ const ProductSpec = ({ product }: ProductSpecProps) => {
         <div className="border-t pt-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <div className="text-lg font-bold text-accent">{product.price}</div>
+              <div className="text-lg font-bold text-primary">GH₵{product.price.toFixed(2)}</div>
               <div className="text-xs text-muted-foreground flex items-center gap-1">
                 <Shield className="h-3 w-3" />
                 Quality Guaranteed
@@ -159,12 +166,36 @@ const ProductSpec = ({ product }: ProductSpecProps) => {
               Free Delivery*
             </div>
           </div>
+
+          {/* Size Selection */}
+          {product.sizes.length > 1 && (
+            <div className="mb-4">
+              <label className="text-sm font-medium mb-2 block">Select Size:</label>
+              <Select value={selectedSize} onValueChange={setSelectedSize}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Choose size" />
+                </SelectTrigger>
+                <SelectContent>
+                  {product.sizes.map((size) => (
+                    <SelectItem key={size} value={size}>
+                      {size}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
           
           <div className="flex gap-2">
-            <Button className="flex-1 gap-2 text-sm">
-              <MessageCircle className="h-4 w-4" />
-              Get Quote
-            </Button>
+            {onAddToCart && (
+              <Button 
+                className="flex-1 gap-2 text-sm"
+                onClick={() => onAddToCart(product, selectedSize)}
+              >
+                <ShoppingCart className="h-4 w-4" />
+                Add to Cart
+              </Button>
+            )}
             <Button variant="outline" size="sm" className="gap-1">
               <Download className="h-3 w-3" />
               Spec Sheet
