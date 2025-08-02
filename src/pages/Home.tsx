@@ -4,6 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, CheckCircle, Phone, MessageCircle, Users, Shield, Clock, Award, Star } from "lucide-react";
 import heroImage from "@/assets/hero-construction.jpg";
 import concreteProducts from "@/assets/concrete-products.jpg";
+import ProductCategories from "@/components/ProductCategories";
+import QuickOrder from "@/components/QuickOrder";
 
 const Home = () => {
   return (
@@ -191,63 +193,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-white animate-fade-in">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
-              We offer a wide range of products
-            </h2>
-            <Button variant="outline" size="lg" className="hover-scale animate-fade-in">
-              Discover all products <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <p className="text-xl text-gray-600 mt-6 max-w-2xl mx-auto animate-fade-in">
-              Let us be your partner in creating structures that reflect quality and meet your practical needs.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group relative overflow-hidden rounded-2xl animate-fade-in hover-scale" style={{ animationDelay: '0.1s' }}>
-              <img 
-                src={concreteProducts} 
-                alt="Hollow Blocks" 
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Hollow Blocks</h3>
-                <p className="text-sm opacity-90 mb-3">6", 8", 9" blocks • Load bearing • Standard & custom sizes</p>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl animate-fade-in hover-scale" style={{ animationDelay: '0.2s' }}>
-              <img 
-                src={concreteProducts} 
-                alt="Solid Blocks" 
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Solid Blocks</h3>
-                <p className="text-sm opacity-90 mb-3">High density • Weather resistant • Foundation grade</p>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl animate-fade-in hover-scale" style={{ animationDelay: '0.3s' }}>
-              <img 
-                src={concreteProducts} 
-                alt="Paving Stones" 
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Paving Stones</h3>
-                <p className="text-sm opacity-90 mb-3">Multiple colors • Non-slip • Decorative patterns</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Product Categories Section */}
+      <ProductCategories onCategorySelect={(category) => window.location.href = `/products?category=${category}`} />
 
       {/* Roofing Solutions Section */}
       <section className="py-20 bg-concrete-light animate-fade-in">
@@ -343,6 +290,174 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Statistics Section */}
+      <section className="py-20 bg-gradient-to-r from-primary to-accent text-white animate-fade-in">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+              Numbers That Speak
+            </h2>
+            <p className="text-xl opacity-90 animate-fade-in">
+              Our track record of excellence in concrete manufacturing
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center animate-scale-in hover-scale" style={{ animationDelay: '0.1s' }}>
+              <div className="text-5xl font-bold mb-2 animate-fade-in">15+</div>
+              <div className="text-lg opacity-90">Years Experience</div>
+            </div>
+            <div className="text-center animate-scale-in hover-scale" style={{ animationDelay: '0.2s' }}>
+              <div className="text-5xl font-bold mb-2 animate-fade-in">500+</div>
+              <div className="text-lg opacity-90">Projects Completed</div>
+            </div>
+            <div className="text-center animate-scale-in hover-scale" style={{ animationDelay: '0.3s' }}>
+              <div className="text-5xl font-bold mb-2 animate-fade-in">50K+</div>
+              <div className="text-lg opacity-90">Products Delivered</div>
+            </div>
+            <div className="text-center animate-scale-in hover-scale" style={{ animationDelay: '0.4s' }}>
+              <div className="text-5xl font-bold mb-2 animate-fade-in">24/7</div>
+              <div className="text-lg opacity-90">Customer Support</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-concrete-light animate-fade-in">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
+              Our Simple Process
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
+              From quote to delivery, we make ordering concrete products easy and hassle-free
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.1s' }}>
+              <div className="bg-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <div className="text-2xl font-bold text-primary">1</div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Get Quote</h3>
+              <p className="text-gray-600">
+                Contact us with your requirements and get an instant quote
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <div className="text-2xl font-bold text-primary">2</div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Place Order</h3>
+              <p className="text-gray-600">
+                Confirm your order and make payment through our secure system
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.3s' }}>
+              <div className="bg-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <div className="text-2xl font-bold text-primary">3</div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Production</h3>
+              <p className="text-gray-600">
+                We manufacture your products using the highest quality materials
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.4s' }}>
+              <div className="bg-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <div className="text-2xl font-bold text-primary">4</div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Delivery</h3>
+              <p className="text-gray-600">
+                Fast and reliable delivery to your construction site
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white animate-fade-in">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
+              What Our Customers Say
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
+              Don't just take our word for it - hear from satisfied customers across Ghana
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-concrete-light p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.1s' }}>
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-600 mb-4">
+                "Excellent quality concrete blocks and fast delivery. Our residential project was completed on time thanks to Phastor's reliable service."
+              </p>
+              <div className="flex items-center">
+                <div className="bg-primary text-white p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                  K
+                </div>
+                <div>
+                  <div className="font-semibold">Kwame Asante</div>
+                  <div className="text-sm text-gray-500">Contractor, Accra</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-concrete-light p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-600 mb-4">
+                "Professional team and high-quality roofing sheets. The aluminum sheets we purchased have excellent durability and finish."
+              </p>
+              <div className="flex items-center">
+                <div className="bg-primary text-white p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                  A
+                </div>
+                <div>
+                  <div className="font-semibold">Ama Osei</div>
+                  <div className="text-sm text-gray-500">Architect, Kumasi</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-concrete-light p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.3s' }}>
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-600 mb-4">
+                "Best concrete products supplier in Ghana. Their paving stones transformed our office complex. Highly recommended!"
+              </p>
+              <div className="flex items-center">
+                <div className="bg-primary text-white p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                  Y
+                </div>
+                <div>
+                  <div className="font-semibold">Yaw Mensah</div>
+                  <div className="text-sm text-gray-500">Project Manager, Tema</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Order Section */}
+      <QuickOrder />
 
       {/* CTA Section */}
       <section className="py-20 bg-gray-900 text-white">

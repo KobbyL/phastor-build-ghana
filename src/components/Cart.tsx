@@ -40,12 +40,12 @@ export const Cart = ({
     return (
       <Button
         onClick={onToggle}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-elegant hover:scale-110 transition-all duration-300 animate-fade-in"
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-elegant hover:scale-110 transition-all duration-300 animate-fade-in pulse"
         size="icon"
       >
         <ShoppingCart className="h-6 w-6 transition-transform duration-200" />
         {items.length > 0 && (
-          <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center animate-scale-in bg-accent text-accent-foreground">
+          <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center animate-scale-in bg-accent text-accent-foreground animate-pulse">
             {itemCount}
           </Badge>
         )}
@@ -137,9 +137,10 @@ export const Cart = ({
                   </div>
                   <Button 
                     onClick={onCheckout} 
-                    className="w-full hover:scale-105 transition-transform duration-200" 
+                    className="w-full hover:scale-105 transition-all duration-300 hover:shadow-lg animate-fade-in" 
                     size="lg"
                   >
+                    <ShoppingCart className="h-4 w-4 mr-2" />
                     Proceed to Checkout
                   </Button>
                 </div>
