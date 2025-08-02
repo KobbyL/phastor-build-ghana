@@ -38,6 +38,7 @@ const Products = () => {
     { id: "blocks", name: "Blocks", icon: <Home className="h-4 w-4" /> },
     { id: "drainage", name: "Drainage", icon: <Factory className="h-4 w-4" /> },
     { id: "paving", name: "Paving", icon: <Ruler className="h-4 w-4" /> },
+    { id: "roofing", name: "Roofing", icon: <Shield className="h-4 w-4" /> },
   ];
 
   const products = [
@@ -113,6 +114,43 @@ const Products = () => {
       features: ["No mortar needed", "Quick installation", "Reusable", "Cost-effective"],
       image: interlockingBlocksImg,
     },
+    // Roofing Products
+    {
+      id: "aluminum-sheets",
+      category: "roofing",
+      name: "Aluminum Roofing Sheets",
+      description: "Lightweight, corrosion-resistant aluminum sheets with excellent durability and modern aesthetic appeal.",
+      sizes: ["0.5mm thickness", "0.7mm thickness", "0.9mm thickness", "Custom lengths"],
+      applications: ["Residential roofing", "Commercial buildings", "Modern architecture"],
+      price: 45.00,
+      priceText: "From GHS 45.00 per m²",
+      features: ["Lightweight", "Corrosion resistant", "Long-lasting", "Easy installation"],
+      image: hollowBlocksImg, // Placeholder - would need roofing image
+    },
+    {
+      id: "corrugated-sheets",
+      category: "roofing",
+      name: "Corrugated Roofing Sheets",
+      description: "Classic corrugated metal sheets providing excellent water drainage and proven durability for all weather conditions.",
+      sizes: ["Profile 18/76", "Profile 32/100", "Profile 45/150", "Custom profiles"],
+      applications: ["Industrial roofing", "Agricultural buildings", "Warehouses"],
+      price: 35.00,
+      priceText: "From GHS 35.00 per m²",
+      features: ["Excellent drainage", "Weather resistant", "Cost-effective", "Easy maintenance"],
+      image: solidBlocksImg, // Placeholder - would need roofing image
+    },
+    {
+      id: "tile-profile-sheets",
+      category: "roofing",
+      name: "Tile Profile Sheets",
+      description: "Aesthetic metal roofing sheets that mimic traditional tiles while providing superior durability and weather protection.",
+      sizes: ["Standard profile", "Premium profile", "Custom colors", "Various lengths"],
+      applications: ["Residential homes", "Villas", "Luxury buildings"],
+      price: 55.00,
+      priceText: "From GHS 55.00 per m²",
+      features: ["Aesthetic appeal", "Tile-like appearance", "Durable coating", "Multiple colors"],
+      image: pavingStonesImg, // Placeholder - would need roofing image
+    },
   ];
 
   const filteredProducts = selectedCategory === "all" 
@@ -184,7 +222,7 @@ const Products = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20">
+      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Badge className="mb-4 bg-accent text-accent-foreground">
@@ -240,12 +278,17 @@ const Products = () => {
 
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <ProductSpec 
-                key={product.id} 
-                product={product} 
-                onAddToCart={addToCart}
-              />
+            {filteredProducts.map((product, index) => (
+              <div 
+                key={product.id}
+                className="animate-fade-in hover-scale"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ProductSpec 
+                  product={product} 
+                  onAddToCart={addToCart}
+                />
+              </div>
             ))}
           </div>
         </div>

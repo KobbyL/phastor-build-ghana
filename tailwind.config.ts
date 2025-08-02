@@ -100,12 +100,46 @@ export default {
 					'100%': {
 						transform: 'translateX(-50%)'
 					}
+				},
+				"fade-in": {
+					"0%": {
+						opacity: "0",
+						transform: "translateY(10px)"
+					},
+					"100%": {
+						opacity: "1",
+						transform: "translateY(0)"
+					}
+				},
+				"scale-in": {
+					"0%": {
+						transform: "scale(0.95)",
+						opacity: "0"
+					},
+					"100%": {
+						transform: "scale(1)",
+						opacity: "1"
+					}
+				},
+				"slide-in-right": {
+					"0%": { transform: "translateX(100%)" },
+					"100%": { transform: "translateX(0)" }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'scroll': 'scroll 30s linear infinite'
+				'scroll': 'scroll 30s linear infinite',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out',
+				'slide-in-right': 'slide-in-right 0.3s ease-out'
+			},
+			// Utility classes for animations
+			'.hover-scale': {
+				'@apply': 'transition-transform duration-200 hover:scale-105'
+			},
+			'.story-link': {
+				'@apply': 'relative inline-block after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left'
 			}
 		}
 	},

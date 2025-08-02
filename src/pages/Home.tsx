@@ -192,22 +192,22 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-fade-in">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
               We offer a wide range of products
             </h2>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="hover-scale animate-fade-in">
               Discover all products <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <p className="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mt-6 max-w-2xl mx-auto animate-fade-in">
               Let us be your partner in creating structures that reflect quality and meet your practical needs.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group relative overflow-hidden rounded-2xl">
+            <div className="group relative overflow-hidden rounded-2xl animate-fade-in hover-scale" style={{ animationDelay: '0.1s' }}>
               <img 
                 src={concreteProducts} 
                 alt="Hollow Blocks" 
@@ -220,7 +220,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-2xl">
+            <div className="group relative overflow-hidden rounded-2xl animate-fade-in hover-scale" style={{ animationDelay: '0.2s' }}>
               <img 
                 src={concreteProducts} 
                 alt="Solid Blocks" 
@@ -233,7 +233,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-2xl">
+            <div className="group relative overflow-hidden rounded-2xl animate-fade-in hover-scale" style={{ animationDelay: '0.3s' }}>
               <img 
                 src={concreteProducts} 
                 alt="Paving Stones" 
@@ -244,6 +244,101 @@ const Home = () => {
                 <h3 className="text-2xl font-bold mb-2">Paving Stones</h3>
                 <p className="text-sm opacity-90 mb-3">Multiple colors • Non-slip • Decorative patterns</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Roofing Solutions Section */}
+      <section className="py-20 bg-concrete-light animate-fade-in">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
+              Premium Roofing Solutions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
+              Durable, weather-resistant roofing sheets that provide excellent protection 
+              and longevity for your construction projects.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.1s' }}>
+              <div className="bg-accent text-accent-foreground p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Shield className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Aluminum Sheets</h3>
+              <p className="text-sm text-gray-600">Lightweight, corrosion-resistant sheets perfect for modern buildings.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-accent text-accent-foreground p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Users className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Corrugated Sheets</h3>
+              <p className="text-sm text-gray-600">Classic corrugated design offering excellent water drainage.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.3s' }}>
+              <div className="bg-accent text-accent-foreground p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Award className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Tile Profile Sheets</h3>
+              <p className="text-sm text-gray-600">Aesthetic appeal with the durability of metal roofing.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale" style={{ animationDelay: '0.4s' }}>
+              <div className="bg-accent text-accent-foreground p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Clock className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Industrial Sheets</h3>
+              <p className="text-sm text-gray-600">Heavy-duty sheets for warehouses and industrial applications.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-white animate-fade-in">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
+              Why Choose Phastor?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
+              With decades of experience, we deliver unmatched quality and service.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.1s' }}>
+              <div className="bg-gradient-to-br from-primary to-accent text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Shield className="h-10 w-10" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Premium Quality</h3>
+              <p className="text-gray-600">
+                All our products meet international standards and undergo rigorous quality testing.
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-gradient-to-br from-accent to-primary text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Clock className="h-10 w-10" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Fast Delivery</h3>
+              <p className="text-gray-600">
+                Reliable delivery service across Ghana with our own fleet of trucks.
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in hover-scale" style={{ animationDelay: '0.3s' }}>
+              <div className="bg-gradient-to-br from-primary to-accent text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <MessageCircle className="h-10 w-10" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Expert Support</h3>
+              <p className="text-gray-600">
+                Our experienced team provides technical advice and project consultation.
+              </p>
             </div>
           </div>
         </div>

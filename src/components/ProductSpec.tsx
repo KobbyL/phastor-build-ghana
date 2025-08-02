@@ -74,14 +74,15 @@ const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
   const spec = specifications[product.name as keyof typeof specifications];
 
   return (
-    <Card className="hover:shadow-lg transition-shadow">
-      <div className="relative">
+    <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+      <div className="relative overflow-hidden">
         <img 
           src={product.image} 
           alt={product.name}
-          className="w-full h-48 object-cover rounded-t-lg"
+          className="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-110"
         />
-        <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground animate-scale-in">
           {product.category}
         </Badge>
       </div>

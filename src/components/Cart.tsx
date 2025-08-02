@@ -34,18 +34,19 @@ export const Cart = ({
   const { toast } = useToast();
   
   const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
   
   if (!isOpen) {
     return (
       <Button
         onClick={onToggle}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-lg"
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-elegant hover:scale-110 transition-all duration-300 animate-fade-in"
         size="icon"
       >
-        <ShoppingCart className="h-6 w-6" />
+        <ShoppingCart className="h-6 w-6 transition-transform duration-200" />
         {items.length > 0 && (
-          <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center">
-            {items.reduce((sum, item) => sum + item.quantity, 0)}
+          <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center animate-scale-in bg-accent text-accent-foreground">
+            {itemCount}
           </Badge>
         )}
       </Button>
@@ -53,8 +54,8 @@ export const Cart = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-background shadow-lg border-l">
+    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm animate-fade-in">
+      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-background shadow-elegant border-l animate-slide-in-right">
         <Card className="h-full rounded-none border-0">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
             <CardTitle className="text-xl">Shopping Cart</CardTitle>
@@ -71,8 +72,12 @@ export const Cart = ({
             ) : (
               <>
                 <div className="flex-1 overflow-y-auto space-y-4">
-                  {items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-3 p-3 border rounded-lg">
+                  {items.map((item, index) => (
+                    <div 
+                      key={item.id} 
+                      className="flex items-center space-x-3 p-3 border rounded-lg hover:shadow-md transition-all duration-200 animate-fade-in hover-scale"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
                       <img 
                         src={item.image} 
                         alt={item.name}
@@ -121,14 +126,18 @@ export const Cart = ({
                   ))}
                 </div>
                 
-                <div className="border-t pt-4 space-y-4">
+                <div className="border-t pt-4 space-y-4 animate-fade-in">
                   <div className="flex justify-between items-center text-lg font-semibold">
-                    <span>Total:</span>
+                    <span>Subtotal ({itemCount} items):</span>
                     <span className="text-primary">GH₵{total.toFixed(2)}</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    <p>• Free delivery for orders over GH₵500</p>
+                    <p>• Contact us for bulk order discounts</p>
                   </div>
                   <Button 
                     onClick={onCheckout} 
-                    className="w-full" 
+                    className="w-full hover:scale-105 transition-transform duration-200" 
                     size="lg"
                   >
                     Proceed to Checkout
