@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +14,15 @@ import {
 } from "lucide-react";
 import aboutTeamImage from "@/assets/about-team.jpg";
 import factoryInteriorImg from "@/assets/factory-interior.jpg";
+import { 
+  fadeInUp, 
+  fadeInLeft, 
+  fadeInRight, 
+  staggerContainer, 
+  staggerItem,
+  scaleIn,
+  cardHover
+} from "@/lib/motion";
 
 const About = () => {
   const values = [
@@ -53,71 +63,131 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <motion.div 
+      className="min-h-screen"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20">
+      <motion.section 
+        className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20"
+        variants={fadeInUp}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge className="mb-4 bg-accent text-accent-foreground">
-              About Phastor
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.div 
+            className="text-center"
+            variants={staggerContainer}
+          >
+            <motion.div variants={staggerItem}>
+              <Badge className="mb-4 bg-accent text-accent-foreground">
+                About Phastor
+              </Badge>
+            </motion.div>
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              variants={fadeInUp}
+            >
               Building Ghana's Future with Quality Concrete Products
-            </h1>
-            <p className="text-xl max-w-3xl mx-auto opacity-90">
+            </motion.h1>
+            <motion.p 
+              className="text-xl max-w-3xl mx-auto opacity-90"
+              variants={fadeInUp}
+            >
               Since 2015, Phastor Concrete Products Ltd has been a trusted partner 
               in Ghana's construction industry, delivering premium concrete solutions 
               that stand the test of time.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Company Story */}
-      <section className="py-20">
+      <motion.section 
+        className="py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+            <motion.div variants={fadeInLeft}>
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-primary mb-6"
+                variants={fadeInUp}
+              >
                 Our Story
-              </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
+              </motion.h2>
+              <motion.div 
+                className="space-y-4 text-muted-foreground"
+                variants={staggerContainer}
+              >
+                <motion.p variants={staggerItem}>
                   Phastor Concrete Products Ltd was founded in 2015 with a simple mission: 
                   to provide Ghana with the highest quality concrete products that contractors, 
                   developers, and homeowners can trust.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p variants={staggerItem}>
                   What started as a small operation has grown into one of Ghana's most 
                   reliable concrete product manufacturers. Our commitment to quality, 
                   innovation, and customer satisfaction has earned us the trust of 
                   hundreds of clients across the country.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p variants={staggerItem}>
                   Today, we operate state-of-the-art production facilities and maintain 
                   a modern fleet of delivery vehicles to ensure your projects stay on 
                   schedule. Our team of experienced professionals is dedicated to 
                   providing you with the best products and service in the industry.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
-              <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <motion.div 
+                className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
+                variants={staggerContainer}
+              >
                 {achievements.map((achievement, index) => (
-                  <div key={index} className="text-center p-4 bg-concrete-light rounded-lg">
-                    <div className="text-2xl font-bold text-accent">{achievement.number}</div>
+                  <motion.div 
+                    key={index} 
+                    className="text-center p-4 bg-concrete-light rounded-lg"
+                    variants={staggerItem}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div 
+                      className="text-2xl font-bold text-accent"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 100, 
+                        delay: index * 0.1 
+                      }}
+                    >
+                      {achievement.number}
+                    </motion.div>
                     <div className="text-sm text-muted-foreground">{achievement.label}</div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="relative">
+            <motion.div 
+              className="relative"
+              variants={fadeInRight}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
               <img 
                 src={aboutTeamImage} 
                 alt="Phastor team and facilities"
                 className="rounded-lg shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-lg shadow-lg">
+              <motion.div 
+                className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-lg shadow-lg"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="flex items-center gap-2">
                   <Factory className="h-6 w-6" />
                   <div>
@@ -125,74 +195,131 @@ const About = () => {
                     <div className="text-sm">Latest Technology</div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-concrete-light">
+      <motion.section 
+        className="py-20 bg-concrete-light"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
-            <Card className="border-l-4 border-accent">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Target className="h-8 w-8 text-accent" />
-                  <h3 className="text-2xl font-bold text-primary">Our Mission</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  To provide Ghana's construction industry with premium quality concrete 
-                  products that exceed expectations while maintaining the highest standards 
-                  of customer service, reliability, and environmental responsibility.
-                </p>
-              </CardContent>
-            </Card>
+          <motion.div 
+            className="grid md:grid-cols-2 gap-12"
+            variants={staggerContainer}
+          >
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="border-l-4 border-accent">
+                  <CardContent className="p-8">
+                    <motion.div 
+                      className="flex items-center gap-3 mb-4"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Target className="h-8 w-8 text-accent" />
+                      <h3 className="text-2xl font-bold text-primary">Our Mission</h3>
+                    </motion.div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      To provide Ghana's construction industry with premium quality concrete 
+                      products that exceed expectations while maintaining the highest standards 
+                      of customer service, reliability, and environmental responsibility.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
 
-            <Card className="border-l-4 border-accent">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Building className="h-8 w-8 text-accent" />
-                  <h3 className="text-2xl font-bold text-primary">Our Vision</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  To be West Africa's leading manufacturer of concrete products, 
-                  recognized for innovation, quality, and our contribution to building 
-                  sustainable infrastructure that serves communities for generations.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="border-l-4 border-accent">
+                  <CardContent className="p-8">
+                    <motion.div 
+                      className="flex items-center gap-3 mb-4"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Building className="h-8 w-8 text-accent" />
+                      <h3 className="text-2xl font-bold text-primary">Our Vision</h3>
+                    </motion.div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      To be West Africa's leading manufacturer of concrete products, 
+                      recognized for innovation, quality, and our contribution to building 
+                      sustainable infrastructure that serves communities for generations.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Our Values */}
-      <section className="py-20">
+      <motion.section 
+        className="py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            variants={fadeInUp}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               Our Core Values
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               These values guide everything we do and define who we are as a company.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+          >
             {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="text-accent mb-4 flex justify-center">
-                    {value.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="text-center">
+                  <CardContent className="p-6">
+                    <motion.div 
+                      className="text-accent mb-4 flex justify-center"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {value.icon}
+                    </motion.div>
+                    <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
+                    <p className="text-muted-foreground">{value.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Certifications */}
       <section className="py-20 bg-concrete-light">
@@ -269,28 +396,55 @@ const About = () => {
       </section>
 
       {/* Why Choose Us CTA */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <motion.section 
+        className="py-20 bg-primary text-primary-foreground"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-6"
+            variants={fadeInUp}
+          >
             Why Choose Phastor?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-8 opacity-90"
+            variants={fadeInUp}
+          >
             Experience the difference that quality, reliability, and local expertise make. 
             Join hundreds of satisfied customers who trust Phastor for their concrete needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
-              <Truck className="h-5 w-5" />
-              Request a Quote
-            </Button>
-            <Button size="lg" variant="outline" className="gap-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <Users className="h-5 w-5" />
-              Meet Our Team
-            </Button>
-          </div>
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={staggerContainer}
+          >
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
+                <Truck className="h-5 w-5" />
+                Request a Quote
+              </Button>
+            </motion.div>
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" variant="outline" className="gap-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Users className="h-5 w-5" />
+                Meet Our Team
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 };
 

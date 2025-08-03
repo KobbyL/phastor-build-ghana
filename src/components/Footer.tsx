@@ -1,99 +1,190 @@
+import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, MessageCircle, Facebook, Twitter, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { fadeInUp, staggerContainer, staggerItem, hoverScale, buttonVariants } from "@/lib/motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <motion.footer 
+      className="bg-primary text-primary-foreground"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={staggerContainer}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={staggerContainer}
+        >
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <div className="bg-accent text-accent-foreground p-2 rounded-lg mr-3">
+          <motion.div 
+            key="company-info"
+            className="space-y-4"
+            variants={staggerItem}
+          >
+            <motion.div 
+              key="logo"
+              className="flex items-center"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.div 
+                className="bg-accent text-accent-foreground p-2 rounded-lg mr-3"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
                 <div className="w-6 h-6 bg-accent-foreground rounded-sm"></div>
-              </div>
+              </motion.div>
               <div>
                 <h2 className="text-lg font-bold">Phastor</h2>
                 <p className="text-sm opacity-90">Concrete Products Ltd</p>
               </div>
-            </div>
+            </motion.div>
             <p className="text-sm opacity-80 max-w-xs">
               Your trusted partner for quality concrete products in Ghana. 
               Building the future with excellence and reliability.
             </p>
-            <div className="flex space-x-3">
-              <Button variant="ghost" size="sm" className="p-2 hover:bg-primary-foreground/10">
-                <Facebook className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="p-2 hover:bg-primary-foreground/10">
-                <Twitter className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="p-2 hover:bg-primary-foreground/10">
-                <Instagram className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+            <motion.div 
+              key="social-links"
+              className="flex space-x-3"
+              variants={staggerContainer}
+            >
+              {[
+                { icon: Facebook, href: "#" },
+                { icon: Twitter, href: "#" },
+                { icon: Instagram, href: "#" }
+              ].map((social, index) => (
+                <motion.div
+                  key={social.icon.name}
+                  variants={staggerItem}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button variant="ghost" size="sm" className="p-2 hover:bg-primary-foreground/10">
+                    <social.icon className="h-4 w-4" />
+                  </Button>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div key="quick-links" variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link to="/about" className="text-sm opacity-80 hover:opacity-100 transition-opacity">About Us</Link></li>
-              <li><Link to="/products" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Our Products</Link></li>
-              <li><Link to="/projects" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Projects</Link></li>
-              <li><Link to="/contact" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Contact Us</Link></li>
-              <li><Link to="/news" className="text-sm opacity-80 hover:opacity-100 transition-opacity">News & Tips</Link></li>
-            </ul>
-          </div>
+            <motion.ul 
+              className="space-y-2"
+              variants={staggerContainer}
+            >
+              {[
+                { name: "About Us", href: "/about" },
+                { name: "Our Products", href: "/products" },
+                { name: "Projects", href: "/projects" },
+                { name: "Contact Us", href: "/contact" },
+                { name: "News & Tips", href: "/news" }
+              ].map((link, index) => (
+                <motion.li 
+                  key={link.name}
+                  variants={staggerItem}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link to={link.href} className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
 
           {/* Products */}
-          <div>
+          <motion.div key="products" variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Our Products</h3>
-            <ul className="space-y-2">
-              <li className="text-sm opacity-80">Hollow Blocks</li>
-              <li className="text-sm opacity-80">Solid Blocks</li>
-              <li className="text-sm opacity-80">U-Drains</li>
-              <li className="text-sm opacity-80">Culverts</li>
-              <li className="text-sm opacity-80">Paving Stones</li>
-              <li className="text-sm opacity-80">Custom Products</li>
-            </ul>
-          </div>
+            <motion.ul 
+              className="space-y-2"
+              variants={staggerContainer}
+            >
+              {[
+                "Hollow Blocks", "Solid Blocks", "U-Drains", 
+                "Culverts", "Paving Stones", "Custom Products"
+              ].map((product, index) => (
+                <motion.li 
+                  key={product}
+                  className="text-sm opacity-80"
+                  variants={staggerItem}
+                  whileHover={{ x: 5, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {product}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
+            <motion.div 
+              className="space-y-3"
+              variants={staggerContainer}
+            >
+              <motion.div 
+                key="address"
+                className="flex items-start gap-3"
+                variants={staggerItem}
+                whileHover={{ x: 5 }}
+              >
                 <MapPin className="h-4 w-4 mt-1 text-accent" />
                 <div>
                   <p className="text-sm opacity-80">123 Industrial Area</p>
                   <p className="text-sm opacity-80">Accra, Ghana</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-3">
+              </motion.div>
+              <motion.div 
+                key="phone"
+                className="flex items-center gap-3"
+                variants={staggerItem}
+                whileHover={{ x: 5 }}
+              >
                 <Phone className="h-4 w-4 text-accent" />
-                <p className="text-sm opacity-80">+233 XX XXX XXXX</p>
-              </div>
-              <div className="flex items-center gap-3">
+                <p className="text-sm opacity-80">0552560460</p>
+              </motion.div>
+              <motion.div 
+                key="email"
+                className="flex items-center gap-3"
+                variants={staggerItem}
+                whileHover={{ x: 5 }}
+              >
                 <Mail className="h-4 w-4 text-accent" />
                 <p className="text-sm opacity-80">info@phastor.com</p>
-              </div>
-              <Button className="w-full gap-2 bg-success hover:bg-success/90 mt-4">
-                <MessageCircle className="h-4 w-4" />
-                Chat on WhatsApp
-              </Button>
-            </div>
-          </div>
-        </div>
+              </motion.div>
+              <motion.div
+                key="whatsapp"
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                initial="initial"
+              >
+                <Button className="w-full gap-2 bg-success hover:bg-success/90 mt-4">
+                  <MessageCircle className="h-4 w-4" />
+                  Chat on WhatsApp
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
+        <motion.div 
+          className="border-t border-primary-foreground/20 mt-8 pt-8 text-center"
+          variants={fadeInUp}
+        >
           <p className="text-sm opacity-60">
             © 2024 Phastor Concrete Products Ltd. All rights reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

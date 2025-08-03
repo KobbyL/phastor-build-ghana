@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -17,6 +18,17 @@ import {
   Truck
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  fadeInUp,
+  fadeInLeft,
+  fadeInRight,
+  scaleIn,
+  staggerContainer,
+  staggerItem,
+  cardHover,
+  buttonVariants,
+  pulse
+} from "@/lib/motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -56,27 +68,38 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <MapPin className="h-6 w-6" />,
-      title: "Visit Our Office",
-      details: ["123 Industrial Area", "Accra, Ghana", "Near Tema Station"],
-      action: "Get Directions",
-    },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Call Us",
-      details: ["+233 XX XXX XXXX", "+233 XX XXX XXXX", "24/7 Emergency Line"],
+      title: "Head Office (Weija)",
+      details: ["TEL: 0552560460"],
+      phone: "0552560460",
       action: "Call Now",
     },
     {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email Us",
-      details: ["info@phastor.com", "sales@phastor.com", "support@phastor.com"],
-      action: "Send Email",
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Pokuase",
+      details: ["TEL: 0552560461"],
+      phone: "0552560461",
+      action: "Call Now",
     },
     {
-      icon: <MessageCircle className="h-6 w-6" />,
-      title: "WhatsApp",
-      details: ["+233 XX XXX XXXX", "Quick Response", "Share Photos & Specs"],
-      action: "Chat Now",
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Adjiriganor",
+      details: ["TEL: 0552560462"],
+      phone: "0552560462",
+      action: "Call Now",
+    },
+    {
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Cape Coast",
+      details: ["TEL: 0552560463"],
+      phone: "0552560463",
+      action: "Call Now",
+    },
+    {
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Takoradi",
+      details: ["TEL: 0552560464"],
+      phone: "0552560464",
+      action: "Call Now",
     },
   ];
 
@@ -87,80 +110,151 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <motion.div 
+      className="min-h-screen"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20">
+      <motion.section 
+        className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20"
+        variants={fadeInUp}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge className="mb-4 bg-accent text-accent-foreground">
-              Contact Us
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.div 
+            className="text-center"
+            variants={staggerContainer}
+          >
+            <motion.div variants={staggerItem}>
+              <Badge className="mb-4 bg-accent text-accent-foreground">
+                Contact Us
+              </Badge>
+            </motion.div>
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              variants={fadeInUp}
+            >
               Let's Build Your Project Together
-            </h1>
-            <p className="text-xl max-w-3xl mx-auto opacity-90">
+            </motion.h1>
+            <motion.p 
+              className="text-xl max-w-3xl mx-auto opacity-90"
+              variants={fadeInUp}
+            >
               Ready to start your construction project? Get in touch with our team 
               for expert advice, competitive quotes, and reliable concrete solutions.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Quick Contact */}
-      <section className="py-12 bg-accent text-accent-foreground">
+      <motion.section 
+        className="py-12 bg-accent text-accent-foreground"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
+          <motion.div 
+            className="flex flex-col md:flex-row items-center justify-between gap-6"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInLeft}>
               <h2 className="text-2xl font-bold mb-2">Need a Quick Quote?</h2>
               <p className="opacity-90">WhatsApp us your requirements and get an instant estimate!</p>
-            </div>
-            <Button size="lg" className="gap-2 bg-success hover:bg-success/90 text-white">
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp +233 XX XXX XXXX
-            </Button>
-          </div>
+            </motion.div>
+            <motion.div
+              variants={fadeInRight}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" className="gap-2 bg-success hover:bg-success/90 text-white">
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp +233 XX XXX XXXX
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Methods */}
-      <section className="py-20">
+      <motion.section 
+        className="py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <motion.div 
+            className="text-center mb-12"
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
+              variants={fadeInUp}
+            >
               Get in Touch
-            </h2>
-            <p className="text-lg text-muted-foreground">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-muted-foreground"
+              variants={fadeInUp}
+            >
               Choose the most convenient way to reach us. We're here to help!
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+            variants={staggerContainer}
+          >
             {contactInfo.map((info, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="text-accent mx-auto mb-3">
-                    {info.icon}
-                  </div>
-                  <CardTitle className="text-lg">{info.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2 mb-4">
-                    {info.details.map((detail, i) => (
-                      <p key={i} className="text-sm text-muted-foreground">{detail}</p>
-                    ))}
-                  </div>
-                  <Button variant="outline" size="sm" className="w-full">
-                    {info.action}
-                  </Button>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="text-center hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <motion.div 
+                      className="text-accent mx-auto mb-3"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {info.icon}
+                    </motion.div>
+                    <CardTitle className="text-lg">{info.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 mb-4">
+                      {info.details.map((detail, i) => (
+                        <p key={`${info.title}-detail-${i}`} className="text-sm text-muted-foreground">{detail}</p>
+                      ))}
+                    </div>
+                    <a href={`tel:${info.phone}`} style={{ textDecoration: 'none' }}>
+                      <Button variant="outline" size="sm" className="w-full">
+                        {info.action}
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Contact Form & Info */}
-          <div className="grid lg:grid-cols-3 gap-12">
+          <motion.div 
+            className="grid lg:grid-cols-3 gap-12"
+            variants={staggerContainer}
+          >
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <motion.div 
+              className="lg:col-span-2"
+              variants={fadeInLeft}
+            >
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">Send Us a Message</CardTitle>
@@ -169,9 +263,18 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
+                  <motion.form 
+                    onSubmit={handleSubmit} 
+                    className="space-y-6"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <motion.div 
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      variants={staggerContainer}
+                    >
+                      <motion.div variants={staggerItem}>
                         <Label htmlFor="name">Full Name *</Label>
                         <Input
                           id="name"
@@ -181,8 +284,8 @@ const Contact = () => {
                           placeholder="Your full name"
                           required
                         />
-                      </div>
-                      <div>
+                      </motion.div>
+                      <motion.div variants={staggerItem}>
                         <Label htmlFor="email">Email Address *</Label>
                         <Input
                           id="email"
@@ -193,11 +296,14 @@ const Contact = () => {
                           placeholder="your.email@example.com"
                           required
                         />
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
+                    <motion.div 
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      variants={staggerContainer}
+                    >
+                      <motion.div variants={staggerItem}>
                         <Label htmlFor="phone">Phone Number *</Label>
                         <Input
                           id="phone"
@@ -207,8 +313,8 @@ const Contact = () => {
                           placeholder="+233 XX XXX XXXX"
                           required
                         />
-                      </div>
-                      <div>
+                      </motion.div>
+                      <motion.div variants={staggerItem}>
                         <Label htmlFor="company">Company/Organization</Label>
                         <Input
                           id="company"
@@ -217,10 +323,10 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="Your company name"
                         />
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
 
-                    <div>
+                    <motion.div variants={staggerItem}>
                       <Label htmlFor="projectType">Project Type</Label>
                       <Input
                         id="projectType"
@@ -229,9 +335,9 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="e.g., Residential, Commercial, Infrastructure"
                       />
-                    </div>
+                    </motion.div>
 
-                    <div>
+                    <motion.div variants={staggerItem}>
                       <Label htmlFor="message">Message *</Label>
                       <Textarea
                         id="message"
@@ -242,128 +348,195 @@ const Contact = () => {
                         rows={5}
                         required
                       />
-                    </div>
+                    </motion.div>
 
-                    <Button type="submit" className="w-full gap-2">
-                      <Send className="h-4 w-4" />
-                      Send Message
-                    </Button>
-                  </form>
+                    <motion.div
+                      variants={staggerItem}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button type="submit" className="w-full gap-2">
+                        <Send className="h-4 w-4" />
+                        Send Message
+                      </Button>
+                    </motion.div>
+                    </motion.form>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
 
             {/* Working Hours & Additional Info */}
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
-                    Working Hours
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {workingHours.map((schedule, index) => (
-                      <div key={index} className="flex justify-between">
-                        <span className="font-medium">{schedule.day}</span>
-                        <span className="text-muted-foreground">{schedule.hours}</span>
+            <motion.div 
+              className="space-y-6"
+              variants={fadeInRight}
+            >
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Clock className="h-5 w-5" />
+                      Working Hours
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {workingHours.map((schedule, index) => (
+                        <div key={index} className="flex justify-between">
+                          <span className="font-medium">{schedule.day}</span>
+                          <span className="text-muted-foreground">{schedule.hours}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 p-3 bg-accent/10 rounded-lg">
+                      <p className="text-sm text-accent font-medium">
+                        Emergency concrete supply available 24/7 for urgent projects
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Why Choose Phastor?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-sm">Free delivery within Accra</span>
                       </div>
-                    ))}
-                  </div>
-                  <div className="mt-4 p-3 bg-accent/10 rounded-lg">
-                    <p className="text-sm text-accent font-medium">
-                      Emergency concrete supply available 24/7 for urgent projects
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-sm">24-48 hour production time</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-sm">Quality guaranteed products</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-sm">Competitive bulk pricing</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-sm">Expert technical support</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Why Choose Phastor?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent" />
-                      <span className="text-sm">Free delivery within Accra</span>
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Our Locations</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-accent" />
+                        <span className="text-sm">Head Office (Weija): +233552560475</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-accent" />
+                        <span className="text-sm">Pokuase: +233552560465</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-accent" />
+                        <span className="text-sm">Adjiriganor: +233552560464</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-accent" />
+                        <span className="text-sm">Cape Coast: +233552560467</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-accent" />
+                        <span className="text-sm">Takoradi: +233552560468</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground">More locations coming soon</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent" />
-                      <span className="text-sm">24-48 hour production time</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent" />
-                      <span className="text-sm">Quality guaranteed products</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent" />
-                      <span className="text-sm">Competitive bulk pricing</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-accent" />
-                      <span className="text-sm">Expert technical support</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Service Areas</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <Truck className="h-4 w-4 text-accent" />
-                      <span className="text-sm">Greater Accra Region</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Truck className="h-4 w-4 text-accent" />
-                      <span className="text-sm">Tema & Surrounding Areas</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Truck className="h-4 w-4 text-accent" />
-                      <span className="text-sm">Eastern Region (Selected Areas)</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-3">
-                      * Special arrangements available for projects outside our standard delivery area
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Map Section */}
-      <section className="py-20 bg-concrete-light">
+      <motion.section 
+        className="py-20 bg-concrete-light"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <motion.div 
+            className="text-center mb-12"
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
+              variants={fadeInUp}
+            >
               Visit Our Facility
-            </h2>
-            <p className="text-lg text-muted-foreground">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-muted-foreground"
+              variants={fadeInUp}
+            >
               See our modern production facility and quality control processes in action.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="bg-muted h-64 rounded-lg flex items-center justify-center">
+          <motion.div 
+            className="bg-muted h-64 rounded-lg flex items-center justify-center"
+            variants={scaleIn}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="text-center">
-              <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
+              </motion.div>
               <p className="text-lg font-semibold">Interactive Map</p>
               <p className="text-muted-foreground">123 Industrial Area, Accra, Ghana</p>
-              <Button className="mt-4 gap-2">
-                <MapPin className="h-4 w-4" />
-                Get Directions
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="mt-4 gap-2">
+                  <MapPin className="h-4 w-4" />
+                  Get Directions
+                </Button>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 };
 

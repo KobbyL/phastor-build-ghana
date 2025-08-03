@@ -96,20 +96,22 @@ const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
         </div>
 
         {/* Technical Specifications */}
-        <div className="bg-concrete-light p-4 rounded-lg">
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
-            <Weight className="h-4 w-4" />
-            Technical Specifications
-          </h4>
-          <div className="grid grid-cols-2 gap-2 text-sm">
-            {Object.entries(spec).map(([key, value]) => (
-              <div key={key} className="flex justify-between">
-                <span className="text-muted-foreground">{key}:</span>
-                <span className="font-medium">{value}</span>
-              </div>
-            ))}
+        {spec ? (
+          <div className="bg-concrete-light p-4 rounded-lg">
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Weight className="h-4 w-4" />
+              Technical Specifications
+            </h4>
+            <div className="grid grid-cols-2 gap-2 text-sm">
+              {Object.entries(spec).map(([key, value]) => (
+                <div key={key} className="flex justify-between">
+                  <span className="text-muted-foreground">{key}:</span>
+                  <span className="font-medium">{value}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
 
         {/* Available Sizes */}
         <div>

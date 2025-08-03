@@ -1,7 +1,19 @@
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, ArrowRight, MessageCircle, Building, Lightbulb } from "lucide-react";
+import {
+  fadeInUp,
+  fadeInLeft,
+  fadeInRight,
+  scaleIn,
+  staggerContainer,
+  staggerItem,
+  cardHover,
+  buttonVariants,
+  pulse
+} from "@/lib/motion";
 
 const News = () => {
   const newsArticles = [
@@ -123,35 +135,72 @@ const News = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <motion.div 
+      className="min-h-screen"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20">
+      <motion.section 
+        className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20"
+        variants={fadeInUp}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge className="mb-4 bg-accent text-accent-foreground">
-              News & Tips
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.div 
+            className="text-center"
+            variants={staggerContainer}
+          >
+            <motion.div variants={staggerItem}>
+              <Badge className="mb-4 bg-accent text-accent-foreground">
+                News & Tips
+              </Badge>
+            </motion.div>
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              variants={fadeInUp}
+            >
               Stay Updated with Phastor
-            </h1>
-            <p className="text-xl max-w-3xl mx-auto opacity-90">
+            </motion.h1>
+            <motion.p 
+              className="text-xl max-w-3xl mx-auto opacity-90"
+              variants={fadeInUp}
+            >
               Get the latest news, construction tips, and industry insights from 
               Ghana's leading concrete products manufacturer.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured Article */}
       {newsArticles.filter(article => article.featured).map(article => (
-        <section key={article.id} className="py-20 bg-concrete-light">
+        <motion.section 
+          key={article.id} 
+          className="py-20 bg-concrete-light"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <Badge className="mb-4">{article.category}</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            <motion.div 
+              className="max-w-4xl mx-auto"
+              variants={staggerContainer}
+            >
+              <motion.div variants={staggerItem}>
+                <Badge className="mb-4">{article.category}</Badge>
+              </motion.div>
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-primary mb-4"
+                variants={fadeInUp}
+              >
                 {article.title}
-              </h2>
-              <div className="flex items-center gap-6 text-muted-foreground mb-6">
+              </motion.h2>
+              <motion.div 
+                className="flex items-center gap-6 text-muted-foreground mb-6"
+                variants={fadeInUp}
+              >
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   {new Date(article.date).toLocaleDateString('en-US', { 
@@ -164,128 +213,224 @@ const News = () => {
                   <User className="h-4 w-4" />
                   {article.author}
                 </div>
-              </div>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              </motion.div>
+              <motion.p 
+                className="text-lg text-muted-foreground mb-6 leading-relaxed"
+                variants={fadeInUp}
+              >
                 {article.content}
-              </p>
-              <Button className="gap-2">
-                <MessageCircle className="h-4 w-4" />
-                Discuss This News
-              </Button>
-            </div>
+              </motion.p>
+              <motion.div
+                variants={staggerItem}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="gap-2">
+                  <MessageCircle className="h-4 w-4" />
+                  Discuss This News
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       ))}
 
       {/* Quick Tips Section */}
-      <section className="py-20">
+      <motion.section 
+        className="py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <motion.div 
+            className="text-center mb-12"
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
+              variants={fadeInUp}
+            >
               Quick Construction Tips
-            </h2>
-            <p className="text-lg text-muted-foreground">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-muted-foreground"
+              variants={fadeInUp}
+            >
               Professional advice from our experienced team to help you succeed.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+          >
             {tips.map((tip, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="text-accent mb-4 flex justify-center">
-                    {tip.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{tip.title}</h3>
-                  <p className="text-muted-foreground">{tip.description}</p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <motion.div 
+                      className="text-accent mb-4 flex justify-center"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {tip.icon}
+                    </motion.div>
+                    <h3 className="text-xl font-semibold mb-3">{tip.title}</h3>
+                    <p className="text-muted-foreground">{tip.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* News Articles */}
-      <section className="py-20 bg-concrete-light">
+      <motion.section 
+        className="py-20 bg-concrete-light"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <motion.div 
+            className="text-center mb-12"
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
+              variants={fadeInUp}
+            >
               Latest Articles
-            </h2>
-            <p className="text-lg text-muted-foreground">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-muted-foreground"
+              variants={fadeInUp}
+            >
               Stay informed with our latest news and helpful construction guides.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <Button
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4 mb-12"
+            variants={staggerContainer}
+          >
+            {categories.map((category, index) => (
+              <motion.div
                 key={category}
-                variant="outline"
-                className="rounded-full"
+                variants={staggerItem}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {category}
-              </Button>
+                <Button
+                  variant="outline"
+                  className="rounded-full"
+                >
+                  {category}
+                </Button>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsArticles.filter(article => !article.featured).map((article) => (
-              <Card key={article.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary">{article.category}</Badge>
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                      <Calendar className="h-3 w-3" />
-                      {new Date(article.date).toLocaleDateString()}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+          >
+            {newsArticles.filter(article => !article.featured).map((article, index) => (
+              <motion.div
+                key={article.id}
+                variants={staggerItem}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="secondary">{article.category}</Badge>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Calendar className="h-3 w-3" />
+                        {new Date(article.date).toLocaleDateString()}
+                      </div>
                     </div>
-                  </div>
-                  <CardTitle className="text-xl leading-tight">{article.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <User className="h-4 w-4" />
-                      {article.author}
+                    <CardTitle className="text-xl leading-tight">{article.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <User className="h-4 w-4" />
+                        {article.author}
+                      </div>
+                      <Button variant="ghost" size="sm" className="gap-2 p-0">
+                        Read More
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
                     </div>
-                    <Button variant="ghost" size="sm" className="gap-2 p-0">
-                      Read More
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <motion.section 
+        className="py-20 bg-primary text-primary-foreground"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-6"
+            variants={fadeInUp}
+          >
             Stay Informed
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-8 opacity-90"
+            variants={fadeInUp}
+          >
             Get construction tips, product updates, and industry news delivered to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
-              <MessageCircle className="h-5 w-5" />
-              Follow on WhatsApp
-            </Button>
-          </div>
-          <p className="text-sm opacity-70 mt-4">
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+            variants={staggerContainer}
+          >
+            <motion.div
+              variants={staggerItem}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
+                <MessageCircle className="h-5 w-5" />
+                Follow on WhatsApp
+              </Button>
+            </motion.div>
+          </motion.div>
+          <motion.p 
+            className="text-sm opacity-70 mt-4"
+            variants={fadeInUp}
+          >
             Get instant updates and tips via WhatsApp
-          </p>
+          </motion.p>
         </div>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 };
 
