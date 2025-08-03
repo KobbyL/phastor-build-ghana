@@ -30,7 +30,7 @@ const Home = () => {
       variants={heroVariants}
     >
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <section className="relative h-screen w-screen overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0">
           <iframe
@@ -42,19 +42,17 @@ const Home = () => {
             className="w-full h-full border-0 outline-0"
             style={{ 
               position: 'absolute', 
-              top: 0, 
-              left: 0, 
-              width: '100%', 
-              height: '100%',
-              transform: 'scale(1.02)', // Slight scale to avoid white edges
+              top: '0', 
+              left: '0', 
+              width: '100vw', 
+              height: '100vh',
               objectFit: 'cover'
             }}
           ></iframe>
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
         </div>
         {/* Content */}
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 h-full flex items-center px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Content */}
             <motion.div 
@@ -153,7 +151,6 @@ const Home = () => {
               </motion.form>
             </motion.div>
           </div>
-        </div>
         </div>
       </section>
 
