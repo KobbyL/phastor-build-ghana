@@ -30,24 +30,31 @@ const Home = () => {
       variants={heroVariants}
     >
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
         {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-          <div className="absolute inset-0 w-full h-full">
-            <iframe
-              src="https://www.youtube.com/embed/d2JL7W6KuwI?autoplay=1&mute=1&controls=0&loop=1&playlist=d2JL7W6KuwI&modestbranding=1&showinfo=0&rel=0"
-              title="Phastor Hero Video"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="w-full h-full object-cover aspect-video sm:aspect-auto"
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-            ></iframe>
-            <div className="absolute inset-0 bg-black/60" />
-          </div>
+        <div className="absolute inset-0 w-full h-full z-0">
+          <iframe
+            src="https://www.youtube.com/embed/d2JL7W6KuwI?autoplay=1&mute=1&controls=0&loop=1&playlist=d2JL7W6KuwI&modestbranding=1&showinfo=0&rel=0"
+            title="Phastor Hero Video"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            className="w-full h-full border-0 outline-0"
+            style={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              width: '100%', 
+              height: '100%',
+              transform: 'scale(1.02)', // Slight scale to avoid white edges
+              objectFit: 'cover'
+            }}
+          ></iframe>
+          <div className="absolute inset-0 bg-black/60" />
         </div>
         {/* Content */}
-        <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Content */}
             <motion.div 
@@ -146,6 +153,7 @@ const Home = () => {
               </motion.form>
             </motion.div>
           </div>
+        </div>
         </div>
       </section>
 
