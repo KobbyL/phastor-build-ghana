@@ -509,29 +509,38 @@ const Contact = () => {
           </motion.div>
 
           <motion.div 
-            className="bg-muted h-64 rounded-lg flex items-center justify-center"
+            className="relative overflow-hidden rounded-lg shadow-lg"
             variants={scaleIn}
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="text-center">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
-              </motion.div>
-              <p className="text-lg font-semibold">Interactive Map</p>
-              <p className="text-muted-foreground">123 Industrial Area, Accra, Ghana</p>
-              <motion.div
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.2345!2d-0.2345!3d5.6789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPhastor%20Limited%2C%20Weija!5e0!3m2!1sen!2sgh!4v1234567890"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Phastor Limited Location"
+              className="w-full h-96 md:h-[400px]"
+            ></iframe>
+            <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+              <p className="font-semibold text-sm">Phastor Limited</p>
+              <p className="text-xs text-muted-foreground">Weija, Accra</p>
+              <motion.a
+                href="https://maps.app.goo.gl/2H3YXdaczmguEy4m6"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="inline-block mt-2"
               >
-                <Button className="mt-4 gap-2">
-                  <MapPin className="h-4 w-4" />
+                <Button size="sm" className="gap-2 text-xs">
+                  <MapPin className="h-3 w-3" />
                   Get Directions
                 </Button>
-              </motion.div>
+              </motion.a>
             </div>
           </motion.div>
         </div>
