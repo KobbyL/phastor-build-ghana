@@ -12,11 +12,13 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={staggerContainer}
+      key="main-footer"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={staggerContainer}
+          key="footer-grid"
         >
           {/* Company Info */}
           <motion.div 
@@ -52,12 +54,12 @@ const Footer = () => {
               variants={staggerContainer}
             >
               {[
-                { icon: Facebook, href: "#" },
-                { icon: Twitter, href: "#" },
-                { icon: Instagram, href: "#" }
+                { icon: Facebook, href: "#", name: "facebook" },
+                { icon: Twitter, href: "#", name: "twitter" },
+                { icon: Instagram, href: "#", name: "instagram" }
               ].map((social, index) => (
                 <motion.div
-                  key={social.icon.name}
+                  key={social.name}
                   variants={staggerItem}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -108,7 +110,7 @@ const Footer = () => {
               {[
                 "Hollow Blocks", "Solid Blocks", "U-Drains", 
                 "Culverts", "Paving Stones", "Custom Products"
-              ].map((product, index) => (
+              ].map((product) => (
                 <motion.li 
                   key={product}
                   className="text-sm opacity-80"
@@ -123,7 +125,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div variants={staggerItem}>
+          <motion.div key="contact-info" variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <motion.div 
               className="space-y-3"
@@ -178,6 +180,7 @@ const Footer = () => {
         <motion.div 
           className="border-t border-primary-foreground/20 mt-8 pt-8 text-center"
           variants={fadeInUp}
+          key="footer-copyright"
         >
           <p className="text-sm opacity-60">
             © 2024 Phastor Concrete Products Ltd. All rights reserved.

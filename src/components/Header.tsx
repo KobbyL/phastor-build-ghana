@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <motion.header 
-      className="absolute top-0 left-0 right-0 z-50 bg-transparent"
+      className="main-header fixed top-0 left-0 right-0 z-50 bg-transparent w-full"
       initial="hidden"
       animate="visible"
       variants={navVariants}
@@ -129,7 +129,7 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              className="lg:hidden py-4 bg-black/80 backdrop-blur-sm rounded-lg"
+              className="lg:hidden py-4 backdrop-blur-sm rounded-lg"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"

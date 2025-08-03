@@ -2,12 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles for mobile video */
+@media (max-width: 768px) {
+  .hero-behind-header {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://res.cloudinary.com/dhs1h58bs/image/upload/v1754235549/1K8A9965_z8feqj.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Hide video on mobile */
+  iframe[title="Phastor Hero Video"] {
+    display: none !important;
+  }
+  
+  /* Adjust container padding for mobile */
+  .container.mx-auto {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    --header-height: 5rem; /* 80px */
     /* Concrete-inspired design system for Phastor */
     --background: 0 0% 98%;
     --foreground: 210 15% 15%;
@@ -193,6 +220,16 @@ All colors MUST be HSL.
   
   .hover-rotate:hover {
     transform: rotate(5deg);
+  }
+
+  .main-header {
+    height: var(--header-height);
+  }
+
+  .hero-behind-header {
+    padding-top: var(--header-height);
+    height: calc(100vh + var(--header-height));
+    margin-top: calc(-1 * var(--header-height));
   }
 }
 

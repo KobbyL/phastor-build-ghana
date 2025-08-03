@@ -30,7 +30,7 @@ const Home = () => {
       variants={heroVariants}
     >
       {/* Hero Section */}
-      <section className="relative h-screen w-screen overflow-hidden">
+      <section className="relative h-[90vh] overflow-hidden hero-behind-header w-full">
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0">
           <iframe
@@ -41,116 +41,63 @@ const Home = () => {
             allowFullScreen
             className="w-full h-full border-0 outline-0"
             style={{ 
-              position: 'absolute', 
+              position: 'absolute', /* Changed back to absolute to restrict to hero section */
               top: '0', 
               left: '0', 
-              width: '100vw', 
-              height: '100vh',
-              objectFit: 'cover'
+              width: '100%', 
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: '-1' /* Ensure it stays behind content */
             }}
           ></iframe>
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
         </div>
         {/* Content */}
-        <div className="relative z-10 h-full flex items-center px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Content */}
-            <motion.div 
-              className="text-white space-y-8"
-              variants={heroItem}
+        <div className="relative z-10 h-full flex items-center justify-center container mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-0">
+          {/* Hero Content */}
+          <motion.div 
+            className="text-white space-y-8 max-w-3xl text-center"
+            variants={heroItem}
+          >
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold leading-tight"
+              variants={fadeInUp}
             >
-              <motion.h1 
-                className="text-5xl md:text-6xl font-bold leading-tight"
-                variants={fadeInUp}
-              >
-                Your trusted partner for concrete products
-              </motion.h1>
-              
-              <motion.div 
-                className="flex items-center gap-4"
-                variants={fadeInUp}
-              >
-                <motion.div 
-                  className="flex items-center gap-2 bg-primary/20 backdrop-blur-sm px-4 py-2 rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Phone className="h-5 w-5 text-primary" />
-                  <span className="text-lg font-semibold">0552560460</span>
-                </motion.div>
-                <motion.div 
-                  className="flex items-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Available 24/7</span>
-                </motion.div>
-              </motion.div>
-            </motion.div>
+              Your trusted partner for concrete products
+            </motion.h1>
 
-            {/* Right side - Quote Form */}
-            <motion.div 
-              className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl"
-              variants={scaleIn}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
+            <motion.p 
+              className="text-lg md:text-xl text-white/80"
+              variants={fadeInUp}
             >
-              <motion.h3 
-                className="text-2xl font-bold text-gray-800 mb-6 text-center"
-                variants={fadeInUp}
+              Building Ghana's future with strength, reliability, and premium quality concrete solutions for projects of any scale.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-row items-center justify-center gap-6"
+              variants={fadeInUp}
+            >
+              <motion.div 
+                className="flex items-center gap-2 bg-primary/20 backdrop-blur-sm px-4 py-2 rounded-full"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Request your free quote
-              </motion.h3>
+                <Phone className="h-5 w-5 text-primary" />
+                <span className="text-lg font-semibold">0552560460</span>
+              </motion.div>
               
-              <motion.form 
-                className="space-y-4"
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
+              <motion.a 
+                href="tel:0552560460"
+                className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full flex items-center gap-2 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                variants={buttonVariants}
               >
-                <motion.div variants={staggerItem}>
-                  <Input 
-                    placeholder="Name" 
-                    className="bg-gray-50 border-gray-200"
-                  />
-                </motion.div>
-                <motion.div variants={staggerItem}>
-                  <Input 
-                    placeholder="Email" 
-                    type="email" 
-                    className="bg-gray-50 border-gray-200"
-                  />
-                </motion.div>
-                <motion.div variants={staggerItem}>
-                  <Input 
-                    placeholder="Phone" 
-                    type="tel" 
-                    className="bg-gray-50 border-gray-200"
-                  />
-                </motion.div>
-                <motion.div variants={staggerItem}>
-                  <Textarea 
-                    placeholder="Tell us about your project..." 
-                    rows={4}
-                    className="bg-gray-50 border-gray-200"
-                  />
-                </motion.div>
-                <motion.div 
-                  variants={buttonVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                >
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3"
-                    size="lg"
-                  >
-                    Get a quote
-                  </Button>
-                </motion.div>
-              </motion.form>
+                <Phone className="h-5 w-5" />
+                Call Us Now
+              </motion.a>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -189,34 +136,22 @@ const Home = () => {
                 ease: "linear" 
               }}
             >
-              {/* First set of logos */}
-              {[
-                "ASHANTI GOLD", "COCOA BOARD", "GHANA HIGHWAYS", 
-                "TEMA STEEL", "ACCRA MALL", "GOLDEN TULIP"
-              ].map((logo, index) => (
-                <motion.div 
-                  key={`first-${index}`}
-                  className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]"
-                  whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="text-white text-xl font-bold">{logo}</div>
-                </motion.div>
-              ))}
-              
-              {/* Duplicate set for seamless loop */}
-              {[
-                "ASHANTI GOLD", "COCOA BOARD", "GHANA HIGHWAYS", 
-                "TEMA STEEL", "ACCRA MALL", "GOLDEN TULIP"
-              ].map((logo, index) => (
-                <motion.div 
-                  key={`second-${index}`}
-                  className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 min-w-[200px]"
-                  whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="text-white text-xl font-bold">{logo}</div>
-                </motion.div>
+              {/* Logos */} 
+              {[...Array(2)].map((_, i) => (
+                [
+                  { src: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754223216/oswal-logo-white-final_hbozyi.png", alt: "Oswal Logo" },
+                  { src: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754223215/68095b961d68dbda228fcf15_Consar_Logo-White_szhxpt.svg", alt: "Consar Logo" },
+                  { src: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754223215/Group-5_z1ht4v.webp", alt: "Client Logo" }
+                ].map((logo, index) => (
+                  <motion.div 
+                    key={`${i}-${index}`}
+                    className="flex items-center justify-center px-8 py-4 min-w-[200px]"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <img src={logo.src} alt={logo.alt} className="h-12 object-contain" />
+                  </motion.div>
+                ))
               ))}
             </motion.div>
             
@@ -323,11 +258,11 @@ const Home = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <img 
-                src={concreteProducts} 
-                alt="Concrete products showcase" 
-                className="rounded-2xl shadow-xl w-full"
-              />
+              <img
+                  src="https://res.cloudinary.com/dhs1h58bs/image/upload/v1754235549/1K8A9965_z8feqj.jpg"
+                  alt="Concrete products showcase"
+                  className="rounded-2xl shadow-xl w-full"
+                />
             </motion.div>
           </div>
         </div>
