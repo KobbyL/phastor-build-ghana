@@ -3,47 +3,30 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import ProductSpec from "@/components/ProductSpec";
-import { Cart, CartItem } from "@/components/Cart";
-import { CheckoutForm } from "@/components/CheckoutForm";
+import { useCart } from "@/components/CartContext";
 import { 
-  MessageCircle, 
-  Download, 
-  Ruler, 
-  Shield, 
-  Truck,
+  ShoppingCart,
+  Eye,
   Building,
   Home,
   Factory,
-  Phone
+  Ruler,
+  Shield
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link, useNavigate } from "react-router-dom";
 import {
   fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  scaleIn,
   staggerContainer,
   staggerItem,
-  cardHover,
-  buttonVariants,
-  pulse
+  cardHover
 } from "@/lib/motion";
 
-// Import product images
-import hollowBlocksImg from "@/assets/hollow-blocks.jpg";
-import solidBlocksImg from "@/assets/solid-blocks.jpg";
-import uDrainsImg from "@/assets/u-drains.jpg";
-import culvertsImg from "@/assets/culverts.jpg";
-import pavingStonesImg from "@/assets/paving-stones.jpg";
-import interlockingBlocksImg from "@/assets/interlocking-blocks.jpg";
-
 const Products = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [showCheckout, setShowCheckout] = useState(false);
   const { toast } = useToast();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const productCategories = [
     { id: "all", name: "All Products", icon: <Building className="h-4 w-4" /> },
@@ -58,110 +41,91 @@ const Products = () => {
       id: "hollow-blocks",
       category: "blocks",
       name: "Hollow Blocks",
-      description: "High-quality hollow concrete blocks ideal for wall construction. Lightweight yet strong, perfect for residential and commercial buildings.",
-      sizes: ["6 inch (150mm)", "8 inch (200mm)", "9 inch (225mm)", "12 inch (300mm)"],
-      applications: ["Wall construction", "Partition walls", "Load-bearing walls"],
+      description: "High-quality hollow concrete blocks ideal for wall construction.",
       price: 2.50,
       priceText: "From GHS 2.50 per block",
-      features: ["Lightweight", "High strength", "Thermal insulation", "Sound dampening"],
-      image: hollowBlocksImg,
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
     },
     {
       id: "solid-blocks",
       category: "blocks",
       name: "Solid Blocks",
-      description: "Dense, solid concrete blocks for structural applications requiring maximum strength and durability.",
-      sizes: ["4 inch (100mm)", "6 inch (150mm)", "8 inch (200mm)"],
-      applications: ["Foundation walls", "Retaining walls", "Structural walls"],
+      description: "Dense, solid concrete blocks for structural applications.",
       price: 3.00,
       priceText: "From GHS 3.00 per block",
-      features: ["Maximum strength", "Weather resistant", "Fire resistant", "Long-lasting"],
-      image: solidBlocksImg,
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420961/constronics-blocks-and-bricks-12-03-2021-01-222972614-954t8_rs9ctt.avif",
     },
     {
       id: "u-drains",
       category: "drainage",
       name: "U-Drains",
-      description: "Precast concrete U-shaped drainage channels for effective water management in urban and rural areas.",
-      sizes: ["300mm width", "450mm width", "600mm width", "Custom sizes"],
-      applications: ["Road drainage", "Residential drainage", "Commercial drainage"],
+      description: "Precast concrete U-shaped drainage channels for water management.",
       price: 45.00,
       priceText: "From GHS 45.00 per meter",
-      features: ["Easy installation", "Durable", "Smooth water flow", "Cost-effective"],
-      image: uDrainsImg,
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421164/c11336bc9097be247e9b9fad2ded43b3_1739411046_ggitgc.webp",
     },
     {
       id: "culverts",
       category: "drainage",
       name: "Culverts",
-      description: "Heavy-duty concrete culverts for major drainage and infrastructure projects. Built to withstand heavy loads.",
-      sizes: ["600mm diameter", "900mm diameter", "1200mm diameter", "Custom sizes"],
-      applications: ["Road crossings", "Bridge drainage", "Large infrastructure"],
-      price: 350.00,
-      priceText: "From GHS 350.00 per meter",
-      features: ["Heavy-duty", "Load-bearing", "Weather resistant", "Long service life"],
-      image: culvertsImg,
+      description: "Heavy-duty concrete culverts for major drainage projects.",
+      price: 150.00,
+      priceText: "From GHS 150.00 per piece",
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421370/1K8A9877_x0qf2g.jpg",
     },
     {
       id: "paving-stones",
       category: "paving",
       name: "Paving Stones",
-      description: "Decorative and functional concrete paving stones available in various patterns and colors for beautiful outdoor spaces.",
-      sizes: ["200x100x60mm", "200x200x60mm", "300x300x60mm", "Custom patterns"],
-      applications: ["Driveways", "Walkways", "Patios", "Public spaces"],
-      price: 18.00,
-      priceText: "From GHS 18.00 per m²",
-      features: ["Non-slip surface", "Weather resistant", "Easy maintenance", "Attractive finish"],
-      image: pavingStonesImg,
+      description: "Decorative concrete paving stones for walkways and driveways.",
+      price: 8.00,
+      priceText: "From GHS 8.00 per sqm",
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421667/paver-block-1643805619-6184337_hu8spg.jpg",
     },
     {
       id: "interlocking-blocks",
-      category: "blocks",
+      category: "paving",
       name: "Interlocking Blocks",
-      description: "Self-locking concrete blocks that require no mortar for construction. Perfect for quick and efficient building.",
-      sizes: ["Standard 390x190x190mm", "Half block 190x190x190mm"],
-      applications: ["Quick construction", "Temporary structures", "Emergency housing"],
-      price: 3.50,
-      priceText: "From GHS 3.50 per block",
-      features: ["No mortar needed", "Quick installation", "Reusable", "Cost-effective"],
-      image: interlockingBlocksImg,
+      description: "Versatile interlocking concrete blocks for various applications.",
+      price: 12.00,
+      priceText: "From GHS 12.00 per sqm",
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421886/interlocking-driveway-bricks-qm2qy3yobu923zbyz7oy9pplv0wxyxfd67t5yr7b4s_nmvuef.jpg",
     },
-    // Roofing Products
     {
       id: "aluminum-sheets",
       category: "roofing",
       name: "Aluminum Roofing Sheets",
-      description: "Lightweight, corrosion-resistant aluminum sheets with excellent durability and modern aesthetic appeal.",
-      sizes: ["0.5mm thickness", "0.7mm thickness", "0.9mm thickness", "Custom lengths"],
-      applications: ["Residential roofing", "Commercial buildings", "Modern architecture"],
+      description: "Lightweight, corrosion-resistant aluminum sheets with excellent durability.",
       price: 45.00,
       priceText: "From GHS 45.00 per m²",
-      features: ["Lightweight", "Corrosion resistant", "Long-lasting", "Easy installation"],
-      image: hollowBlocksImg, // Placeholder - would need roofing image
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422029/image_kr0jzj.webp",
+    },
+    {
+      id: "galvanized-sheets",
+      category: "roofing",
+      name: "Galvanized Steel Sheets",
+      description: "Durable galvanized steel roofing sheets for long-lasting protection.",
+      price: 35.00,
+      priceText: "From GHS 35.00 per m²",
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422125/GI-Roof-Panels_cuslve.jpg",
     },
     {
       id: "corrugated-sheets",
       category: "roofing",
       name: "Corrugated Roofing Sheets",
-      description: "Classic corrugated metal sheets providing excellent water drainage and proven durability for all weather conditions.",
-      sizes: ["Profile 18/76", "Profile 32/100", "Profile 45/150", "Custom profiles"],
-      applications: ["Industrial roofing", "Agricultural buildings", "Warehouses"],
-      price: 35.00,
-      priceText: "From GHS 35.00 per m²",
-      features: ["Excellent drainage", "Weather resistant", "Cost-effective", "Easy maintenance"],
-      image: solidBlocksImg, // Placeholder - would need roofing image
+      description: "Classic corrugated metal sheets perfect for industrial and residential use.",
+      price: 28.00,
+      priceText: "From GHS 28.00 per m²",
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422241/coloured-roofing-sheet-500x500-1_jvwf2h.jpg",
     },
     {
-      id: "tile-profile-sheets",
+      id: "polycarbonate-sheets",
       category: "roofing",
-      name: "Tile Profile Sheets",
-      description: "Aesthetic metal roofing sheets that mimic traditional tiles while providing superior durability and weather protection.",
-      sizes: ["Standard profile", "Premium profile", "Custom colors", "Various lengths"],
-      applications: ["Residential homes", "Villas", "Luxury buildings"],
+      name: "Polycarbonate Sheets",
+      description: "Transparent polycarbonate sheets for natural lighting and weather protection.",
       price: 55.00,
       priceText: "From GHS 55.00 per m²",
-      features: ["Aesthetic appeal", "Tile-like appearance", "Durable coating", "Multiple colors"],
-      image: pavingStonesImg, // Placeholder - would need roofing image
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422030/aluminum-roofing-sheet_qhehfr.jpg",
     },
   ];
 
@@ -169,180 +133,83 @@ const Products = () => {
     ? products 
     : products.filter(product => product.category === selectedCategory);
 
-  const addToCart = (product: any, size?: string) => {
-    const cartItemId = `${product.id}-${size || 'default'}`;
-    const existingItem = cartItems.find(item => item.id === cartItemId);
-    
-    if (existingItem) {
-      setCartItems(prev => 
-        prev.map(item => 
-          item.id === cartItemId 
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      const newItem: CartItem = {
-        id: cartItemId,
-        name: product.name,
-        price: product.price,
-        quantity: 1,
-        image: product.image,
-        size,
-      };
-      setCartItems(prev => [...prev, newItem]);
-    }
-    
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      description: product.description,
+      category: product.category,
+      stock_quantity: 100,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      sizes: ["Standard"],
+      applications: ["Construction"],
+      features: ["High Quality"],
+      priceText: product.priceText
+    }, 1);
+
     toast({
-      title: "Added to cart",
+      title: "Added to Cart",
       description: `${product.name} has been added to your cart.`,
     });
   };
 
-  const updateCartQuantity = (id: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeFromCart(id);
-    } else {
-      setCartItems(prev => 
-        prev.map(item => 
-          item.id === id ? { ...item, quantity } : item
-        )
-      );
-    }
-  };
-
-  const removeFromCart = (id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
-  };
-
-  const handleCheckout = () => {
-    setIsCartOpen(false);
-    setShowCheckout(true);
-  };
-
-  const handleCheckoutSuccess = () => {
-    setCartItems([]);
-    setShowCheckout(false);
-    toast({
-      title: "Order Submitted!",
-      description: "Thank you for your order. We'll contact you soon.",
-    });
-  };
-
-  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
   return (
     <motion.div 
-      className="min-h-screen"
+      className="min-h-screen bg-background"
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
     >
       {/* Hero Section */}
       <motion.section 
-        className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20"
-        variants={fadeInUp}
+        className="relative py-20 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground"
+        variants={staggerItem}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center"
-            variants={staggerContainer}
+            variants={fadeInUp}
           >
-            <motion.div variants={staggerItem}>
-              <Badge className="mb-4 bg-accent text-accent-foreground">
-                Our Products
-              </Badge>
-            </motion.div>
-            <motion.h1 
-              className="text-4xl md:text-5xl font-bold mb-6"
-              variants={fadeInUp}
-            >
-              Premium Concrete Products for Every Project
-            </motion.h1>
-            <motion.p 
-              className="text-xl max-w-3xl mx-auto opacity-90 mb-8"
-              variants={fadeInUp}
-            >
-              From residential buildings to major infrastructure projects, our comprehensive 
-              range of high-quality concrete products meets all your construction needs.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              variants={staggerContainer}
-            >
-              <motion.div
-                variants={staggerItem}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
-                  <Download className="h-5 w-5" />
-                  Download Catalog
-                </Button>
-              </motion.div>
-              <motion.div
-                variants={staggerItem}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="outline" className="gap-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  <MessageCircle className="h-5 w-5" />
-                  Get Custom Quote
-                </Button>
-              </motion.div>
-            </motion.div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Our Products
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+              High-quality concrete products for all your construction needs
+            </p>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Product Categories */}
+      {/* Products Section */}
       <motion.section 
         className="py-20"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
+        variants={staggerItem}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            variants={staggerContainer}
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-primary mb-4"
-              variants={fadeInUp}
-            >
-              Browse Our Product Range
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-muted-foreground"
-              variants={fadeInUp}
-            >
-              Select a category to view specific products and add them to your cart.
-            </motion.p>
-          </motion.div>
-
           {/* Category Filter */}
           <motion.div 
             className="flex flex-wrap justify-center gap-4 mb-12"
             variants={staggerContainer}
           >
-            {productCategories.map((category, index) => (
-              <motion.div
+            {productCategories.map((category) => (
+              <motion.button
                 key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${
+                  selectedCategory === category.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted hover:bg-muted/80"
+                }`}
                 variants={staggerItem}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button
-                  variant={selectedCategory === category.id ? "default" : "outline"}
-                  className="gap-2"
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  {category.icon}
-                  {category.name}
-                </Button>
-              </motion.div>
+                {category.icon}
+                {category.name}
+              </motion.button>
             ))}
           </motion.div>
 
@@ -351,197 +218,79 @@ const Products = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
           >
-            {filteredProducts.map((product, index) => (
-              <motion.div 
+            {filteredProducts.map((product) => (
+              <motion.div
                 key={product.id}
                 variants={staggerItem}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
+                whileHover="hover"
               >
-                <ProductSpec 
-                  product={product} 
-                  onAddToCart={addToCart}
-                />
+                <Link to={`/products/${product.id}`} className="block">
+                  <Card className="h-full overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge variant="secondary" className="capitalize">
+                        {product.category}
+                      </Badge>
+                    </div>
+                  </div>
+                  
+                  <CardHeader>
+                    <CardTitle className="text-xl">{product.name}</CardTitle>
+                  </CardHeader>
+                  
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-muted-foreground mb-4 flex-1">
+                      {product.description}
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-2xl font-bold text-primary">
+                          {product.priceText}
+                        </span>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleAddToCart(product);
+                          }}
+                          className="flex-1 gap-2"
+                          size="sm"
+                        >
+                          <ShoppingCart className="h-4 w-4" />
+                          Add to Cart
+                        </Button>
+                        <Button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            navigate(`/products/${product.id}`);
+                          }}
+                          variant="outline"
+                          size="sm"
+                          className="gap-2"
+                        >
+                          <Eye className="h-4 w-4" />
+                          View Details
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </motion.section>
-
-      {/* Custom Products Section */}
-      <motion.section 
-        className="py-20 bg-concrete-light"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center max-w-4xl mx-auto"
-            variants={staggerContainer}
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-primary mb-6"
-              variants={fadeInUp}
-            >
-              Need Something Custom?
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-muted-foreground mb-8"
-              variants={fadeInUp}
-            >
-              We specialize in creating custom concrete products tailored to your specific 
-              project requirements. Our experienced team can design and manufacture 
-              bespoke solutions that meet your exact specifications.
-            </motion.p>
-            
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
-              variants={staggerContainer}
-            >
-              <motion.div 
-                className="text-center"
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div 
-                  className="bg-accent text-accent-foreground p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Ruler className="h-8 w-8" />
-                </motion.div>
-                <h3 className="font-semibold mb-2">Custom Sizes</h3>
-                <p className="text-sm text-muted-foreground">Any dimensions to fit your project needs</p>
-              </motion.div>
-              <motion.div 
-                className="text-center"
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div 
-                  className="bg-accent text-accent-foreground p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Shield className="h-8 w-8" />
-                </motion.div>
-                <h3 className="font-semibold mb-2">Special Strength</h3>
-                <p className="text-sm text-muted-foreground">Engineered for specific load requirements</p>
-              </motion.div>
-              <motion.div 
-                className="text-center"
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div 
-                  className="bg-accent text-accent-foreground p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Truck className="h-8 w-8" />
-                </motion.div>
-                <h3 className="font-semibold mb-2">Quick Delivery</h3>
-                <p className="text-sm text-muted-foreground">Fast production and reliable delivery</p>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" className="gap-2">
-                <MessageCircle className="h-5 w-5" />
-                Discuss Custom Requirements
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* CTA Section */}
-      <motion.section 
-        className="py-20 bg-primary text-primary-foreground"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
-            variants={fadeInUp}
-          >
-            Ready to Order?
-          </motion.h2>
-          <motion.p 
-            className="text-xl mb-8 opacity-90"
-            variants={fadeInUp}
-          >
-            Contact us today for competitive pricing, expert advice, and reliable delivery 
-            of all your concrete product needs.
-          </motion.p>
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            variants={staggerContainer}
-          >
-            <motion.div
-              variants={staggerItem}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
-                <MessageCircle className="h-5 w-5" />
-                WhatsApp Quote
-              </Button>
-            </motion.div>
-            <motion.div
-              variants={staggerItem}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" variant="outline" className="gap-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                <Phone className="h-5 w-5" />
-                Call Now
-              </Button>
-            </motion.div>
-            <motion.div
-              variants={staggerItem}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" variant="ghost" className="gap-2 text-primary-foreground hover:bg-primary-foreground/10">
-                <Download className="h-5 w-5" />
-                Download Catalog
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Cart Component */}
-      <Cart
-        items={cartItems}
-        onUpdateQuantity={updateCartQuantity}
-        onRemoveItem={removeFromCart}
-        onCheckout={handleCheckout}
-        isOpen={isCartOpen}
-        onToggle={() => setIsCartOpen(!isCartOpen)}
-      />
-
-      {/* Checkout Form */}
-      {showCheckout && (
-        <CheckoutForm
-          items={cartItems}
-          total={total}
-          onSuccess={handleCheckoutSuccess}
-          onCancel={() => setShowCheckout(false)}
-        />
-      )}
     </motion.div>
   );
 };

@@ -13,9 +13,12 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
 import AdminLogin from "./pages/AdminLogin";
+import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
 import { AdminLayout } from "./components/layouts/AdminLayout";
 import { ProductsPage } from "./pages/admin/Products";
+import { CartProvider } from "./components/CartContext";
+import CartPage from "./pages/Cart";
 
 const queryClient = new QueryClient();
 
@@ -28,9 +31,12 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/news" element={<News />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CartPage showCheckout={true} />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/products" replace />} />
@@ -51,15 +57,17 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1">
-            <AnimatedRoutes />
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1">
+              <AnimatedRoutes />
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

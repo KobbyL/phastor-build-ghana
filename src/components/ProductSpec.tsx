@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,8 @@ import {
   Download,
   CheckCircle,
   Weight,
-  ShoppingCart
+  ShoppingCart,
+  Eye
 } from "lucide-react";
 
 interface ProductSpecProps {
@@ -31,6 +33,7 @@ interface ProductSpecProps {
 }
 
 const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
+  const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const specifications = {
     "Hollow Blocks": {
@@ -74,7 +77,7 @@ const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
   const spec = specifications[product.name as keyof typeof specifications];
 
   return (
-    <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+    <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group cursor-pointer" onClick={() => navigate(`/products/${product.id}`)}>
       <div className="relative overflow-hidden">
         <img 
           src={product.image} 
@@ -172,7 +175,7 @@ const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
 
           {/* Size Selection */}
           {product.sizes.length > 1 && (
-            <div className="mb-4">
+            <div className="mb-4" onClick={(e) => e.stopPropagation()}>
               <label className="text-sm font-medium mb-2 block">Select Size:</label>
               <Select value={selectedSize} onValueChange={setSelectedSize}>
                 <SelectTrigger>
@@ -190,16 +193,36 @@ const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
           )}
           
           <div className="flex gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="gap-1 flex-1"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/products/${product.id}`);
+              }}
+            >
+              <Eye className="h-3 w-3" />
+              View Details
+            </Button>
             {onAddToCart && (
               <Button 
                 className="flex-1 gap-2 text-sm"
-                onClick={() => onAddToCart(product, selectedSize)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAddToCart(product, selectedSize);
+                }}
               >
                 <ShoppingCart className="h-4 w-4" />
                 Add to Cart
               </Button>
             )}
-            <Button variant="outline" size="sm" className="gap-1">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="gap-1"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Download className="h-3 w-3" />
               Spec Sheet
             </Button>

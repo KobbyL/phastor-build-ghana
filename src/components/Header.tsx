@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { navVariants, mobileMenuVariants, buttonVariants, hoverScale } from "@/lib/motion";
+import { useCart } from "./CartContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,10 +21,12 @@ const Header = () => {
   ];
 
   const isActive = (href: string) => location.pathname === href;
+  const { cart } = useCart();
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <motion.header 
-      className="main-header fixed top-0 left-0 right-0 z-50 bg-transparent w-full"
+      className="main-header fixed top-0 left-0 right-0 z-50 w-full bg-black/20 backdrop-blur-md border-b border-white/10"
       initial="hidden"
       animate="visible"
       variants={navVariants}
@@ -73,11 +76,17 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <motion.div 
-            className="hidden lg:flex items-center"
+            className="hidden lg:flex items-center space-x-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 }}
           >
+            <Link to="/cart" className="relative">
+              <ShoppingCart className="h-6 w-6 text-white" />
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">{itemCount}</span>
+              )}
+            </Link>
             <motion.div
               whileHover="hover"
               whileTap="tap"
@@ -159,11 +168,17 @@ const Header = () => {
                 {/* Show Admin only if admin */}
                 {/* Admin button removed as requested */}
                 <motion.div 
-                  className="pt-4"
+                  className="pt-4 flex items-center space-x-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
+                  <Link to="/cart" className="relative">
+                    <ShoppingCart className="h-6 w-6 text-white" />
+                    {itemCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">{itemCount}</span>
+                    )}
+                  </Link>
                   <Button 
                     variant="outline" 
                     size="sm" 
