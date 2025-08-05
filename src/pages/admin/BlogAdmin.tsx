@@ -100,6 +100,21 @@ export default function BlogAdmin() {
     }
   };
 
+  const handlePublishPost = async (post: BlogPost) => {
+    try {
+      await BlogService.updateBlogPost({
+        id: post.id,
+        status: 'published',
+        published_at: new Date().toISOString()
+      });
+      toast.success('Blog post published successfully');
+      loadBlogData();
+    } catch (error) {
+      console.error('Error publishing post:', error);
+      toast.error('Failed to publish blog post');
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'published':
@@ -320,13 +335,19 @@ export default function BlogAdmin() {
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
+                         <DropdownMenuContent align="end">
                           {post.status === 'published' && (
                             <DropdownMenuItem asChild>
                               <Link to={`/blog/${post.slug}`} target="_blank">
                                 <Eye className="h-4 w-4 mr-2" />
                                 View Post
                               </Link>
+                            </DropdownMenuItem>
+                          )}
+                          {post.status === 'draft' && (
+                            <DropdownMenuItem onClick={() => handlePublishPost(post)}>
+                              <TrendingUp className="h-4 w-4 mr-2" />
+                              Publish Post
                             </DropdownMenuItem>
                           )}
                           <DropdownMenuItem asChild>

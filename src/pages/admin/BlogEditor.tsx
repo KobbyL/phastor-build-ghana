@@ -67,7 +67,7 @@ export default function BlogEditor() {
       content: '',
       featured_image: '',
       author_name: '',
-      status: 'draft',
+      status: 'published',
       tags: '',
       meta_title: '',
       meta_description: '',
