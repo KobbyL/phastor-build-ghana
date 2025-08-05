@@ -10,6 +10,7 @@ export type Product = Partial<BaseProduct> & {
   description: string;
   price: number;
   category: string;
+  stock_quantity: number;
   image?: string;
   sizes?: string[];
   applications?: string[];

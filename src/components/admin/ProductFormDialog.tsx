@@ -20,14 +20,7 @@ interface ProductFormDialogProps {
   onSuccess: () => void;
 }
 
-interface Product {
-  id?: string;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  stock_quantity: number;
-}
+import { Product } from "@/types/product";
 
 export function ProductFormDialog({
   isOpen,
@@ -35,7 +28,7 @@ export function ProductFormDialog({
   product,
   onSuccess,
 }: ProductFormDialogProps) {
-  const [formData, setFormData] = useState<Product>(
+  const [formData, setFormData] = useState<Partial<Product> & { name: string; description: string; price: number; category: string; stock_quantity: number }>(
     product || {
       name: "",
       description: "",

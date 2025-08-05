@@ -52,7 +52,7 @@ type BlogPostFormData = z.infer<typeof blogPostSchema>;
 export default function BlogEditor() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-  const isEditing = id !== 'new';
+  const isEditing = id !== 'new' && id !== undefined;
   
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<BlogCategory[]>([]);
@@ -178,12 +178,7 @@ export default function BlogEditor() {
         category_ids: selectedCategories.length > 0 ? selectedCategories : undefined,
       };
 
-      if (isEditing) {
-        if (!id || id === 'new') {
-          toast.error('Invalid blog post ID.');
-          setLoading(false);
-          return;
-        }
+      if (isEditing && id && id !== 'new') {
         await BlogService.updateBlogPost({ id, ...postData });
         toast.success('Blog post updated successfully');
       } else {
