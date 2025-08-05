@@ -6,65 +6,22 @@ export class BlogService {
   static async getBlogPosts(filters: BlogFilters = {}, page = 1, limit = 10) {
     try {
       // Build the query with filters
-      let query = `
-        SELECT bp.*, 
-               COALESCE(
-                 json_agg(
-                   json_build_object(
-                     'id', bc.id,
-                     'name', bc.name,
-                     'slug', bc.slug,
-                     'description', bc.description,
-                     'color', bc.color,
-                     'created_at', bc.created_at
-                   )
-                 ) FILTER (WHERE bc.id IS NOT NULL), 
-                 '[]'
-               ) as categories
-        FROM blog_posts bp
-        LEFT JOIN blog_post_categories bpc ON bp.id = bpc.post_id
-        LEFT JOIN blog_categories bc ON bpc.category_id = bc.id
-      `;
-      
-      const conditions = [];
-      const params = [];
+      // Use direct Supabase query approach
+      let dbQuery = (supabase as any).from('blog_posts').select('*');
       
       if (filters.status) {
-        conditions.push(`bp.status = $${params.length + 1}`);
-        params.push(filters.status);
-      } else {
-        conditions.push(`bp.status = $${params.length + 1}`);
-        params.push('published');
+        dbQuery = dbQuery.eq('status', filters.status);
       }
       
       if (filters.search) {
-        conditions.push(`(bp.title ILIKE $${params.length + 1} OR bp.content ILIKE $${params.length + 1} OR bp.excerpt ILIKE $${params.length + 1})`);
-        params.push(`%${filters.search}%`);
+        dbQuery = dbQuery.or(`title.ilike.%${filters.search}%,content.ilike.%${filters.search}%,excerpt.ilike.%${filters.search}%`);
       }
       
       if (filters.author) {
-        conditions.push(`bp.author_name = $${params.length + 1}`);
-        params.push(filters.author);
+        dbQuery = dbQuery.eq('author_name', filters.author);
       }
       
-      if (conditions.length > 0) {
-        query += ` WHERE ${conditions.join(' AND ')}`;
-      }
-      
-      query += `
-        GROUP BY bp.id
-        ORDER BY bp.published_at DESC NULLS LAST, bp.created_at DESC
-        LIMIT $${params.length + 1} OFFSET $${params.length + 2}
-      `;
-      
-      params.push(limit, (page - 1) * limit);
-      
-      // Skip the RPC call that's causing 404 errors and use the direct query approach
-      // The RPC function 'execute_sql' doesn't exist or isn't accessible
-      const { data: fallbackData, error: fallbackError } = await (supabase as any)
-        .from('blog_posts')
-        .select('*')
-        .eq('status', filters.status || 'published')
+      const { data: fallbackData, error: fallbackError } = await dbQuery
         .order('created_at', { ascending: false })
         .range((page - 1) * limit, page * limit - 1);
       
