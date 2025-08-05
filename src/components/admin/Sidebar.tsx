@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Package, Settings, Users, MessageSquare, LogOut } from "lucide-react";
+import { Package, Settings, Users, MessageSquare, LogOut, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,7 @@ export const Sidebar = () => {
 
   const navItems = [
     { icon: Package, label: "Products", href: "/admin/products" },
+    { icon: FileText, label: "Blog", href: "/admin/blog" },
     { icon: Users, label: "Users", href: "/admin/users" },
     { icon: MessageSquare, label: "Messages", href: "/admin/messages" },
     { icon: Settings, label: "Settings", href: "/admin/settings" },
