@@ -5,6 +5,7 @@ import { BlogPost as BlogPostType } from '@/types/blog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import BlogContent from '@/components/BlogContent';
 import { Calendar, User, ArrowLeft, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { format } from 'date-fns';
 
@@ -127,7 +128,7 @@ export default function BlogPost() {
             </div>
           )}
 
-          <div className="p-8">
+          <div className="p-8 lg:p-12">
             {/* Categories */}
             {post.categories && post.categories.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
@@ -144,7 +145,7 @@ export default function BlogPost() {
             )}
 
             {/* Title */}
-            <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               {post.title}
             </h1>
 
@@ -199,10 +200,9 @@ export default function BlogPost() {
             </div>
 
             {/* Content */}
-            <div 
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <div className="mb-8">
+              <BlogContent content={post.content} />
+            </div>
 
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
