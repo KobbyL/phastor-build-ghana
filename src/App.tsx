@@ -19,6 +19,8 @@ import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
 import { AdminLayout } from "./components/layouts/AdminLayout";
 import { ProductsPage } from "./pages/admin/Products";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import Orders from "./pages/admin/Orders";
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import BlogEditor from "./pages/admin/BlogEditor";
 import { CartProvider } from "./components/CartContext";
@@ -45,7 +47,8 @@ const AnimatedRoutes = () => {
         <Route path="/checkout" element={<CartPage showCheckout={true} />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Navigate to="/admin/products" replace />} />
+          <Route index element={<AdminDashboard />} />
+          <Route path="orders" element={<Orders />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="blog" element={<BlogAdmin />} />
           <Route path="blog/new" element={<BlogEditor />} />
