@@ -139,23 +139,24 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              className="lg:hidden py-4 backdrop-blur-sm rounded-lg"
+              className="lg:hidden py-6 bg-black/80 backdrop-blur-md rounded-lg mt-2 border border-white/10"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="hidden"
             >
-              <nav className="flex flex-col space-y-4 px-4">
+              <nav className="flex flex-col px-6">
                 {navigation.map((item, index) => (
                   <motion.div
                     key={item.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
+                    className="py-3 border-b border-white/10 last:border-b-0"
                   >
                     <Link
                       to={item.href}
-                      className={`text-sm font-medium transition-colors ${
+                      className={`text-base font-medium transition-colors block ${
                         isActive(item.href)
                           ? "text-white"
                           : "text-white/80 hover:text-white"
@@ -166,24 +167,26 @@ const Header = () => {
                     </Link>
                   </motion.div>
                 ))}
-                {/* Show Admin only if admin */}
-                {/* Admin button removed as requested */}
+                
                 <motion.div 
-                  className="pt-4 flex items-center space-x-4"
+                  className="pt-6 mt-4 border-t border-white/10 flex flex-col gap-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <Link to="/cart" className="relative">
-                    <ShoppingCart className="h-6 w-6 text-white" />
-                    {itemCount > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">{itemCount}</span>
-                    )}
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link to="/cart" className="relative flex items-center gap-2 text-white/80 hover:text-white">
+                      <ShoppingCart className="h-6 w-6" />
+                      <span>Cart</span>
+                      {itemCount > 0 && (
+                        <span className="absolute -top-2 left-4 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">{itemCount}</span>
+                      )}
+                    </Link>
+                  </div>
                   <Button 
                     variant="outline" 
-                    size="sm" 
-                    className="w-full bg-transparent border-white text-white hover:bg-white hover:text-gray-800"
+                    size="lg"
+                    className="w-full bg-transparent border-white text-white hover:bg-white hover:text-gray-800 font-medium"
                   >
                     Get a quote
                   </Button>

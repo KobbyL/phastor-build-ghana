@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, MessageCircle, Facebook, Twitter, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
+import { SiTiktok } from "@icons-pack/react-simple-icons";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { fadeInUp, staggerContainer, staggerItem, hoverScale, buttonVariants } from "@/lib/motion";
@@ -32,17 +33,15 @@ const Footer = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.div 
-                className="bg-accent text-accent-foreground p-2 rounded-lg mr-3"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="w-6 h-6 bg-accent-foreground rounded-sm"></div>
-              </motion.div>
-              <div>
-                <h2 className="text-lg font-bold">Phastor</h2>
-                <p className="text-sm opacity-90">Concrete Products Ltd</p>
-              </div>
+              <Link to="/" className="flex items-center">
+                <motion.img 
+                  src="https://res.cloudinary.com/dhs1h58bs/image/upload/v1754218343/CONCRETE_PRODUCTS_sxhdb3.png"
+                  alt="Phastor Logo"
+                  className="h-16 w-auto"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                />
+              </Link>
             </motion.div>
             <p className="text-sm opacity-80 max-w-xs">
               Your trusted partner for quality concrete products in Ghana. 
@@ -54,9 +53,21 @@ const Footer = () => {
               variants={staggerContainer}
             >
               {[
-                { icon: Facebook, href: "#", name: "facebook" },
-                { icon: Twitter, href: "#", name: "twitter" },
-                { icon: Instagram, href: "#", name: "instagram" }
+                { 
+                  icon: Facebook, 
+                  href: "https://www.facebook.com/profile.php?id=100086429667000", 
+                  name: "facebook" 
+                },
+                { 
+                  icon: Instagram, 
+                  href: "https://www.instagram.com/phastorltd/", 
+                  name: "instagram" 
+                },
+                { 
+                  icon: SiTiktok, 
+                  href: "https://www.tiktok.com/@phastorltd", 
+                  name: "tiktok" 
+                }
               ].map((social, index) => (
                 <motion.div
                   key={social.name}
@@ -64,9 +75,16 @@ const Footer = () => {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button variant="ghost" size="sm" className="p-2 hover:bg-primary-foreground/10">
-                    <social.icon className="h-4 w-4" />
-                  </Button>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                  >
+                    <Button variant="ghost" size="sm" className="p-2 hover:bg-primary-foreground/10">
+                      <social.icon className="h-4 w-4" />
+                    </Button>
+                  </a>
                 </motion.div>
               ))}
             </motion.div>
@@ -183,7 +201,7 @@ const Footer = () => {
           key="footer-copyright"
         >
           <p className="text-sm opacity-60">
-            © 2024 Phastor Concrete Products Ltd. All rights reserved.
+            © 2025 Phastor Concrete Products Ltd. All rights reserved.
           </p>
         </motion.div>
       </div>
