@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -25,33 +26,56 @@ import {
 } from "@/lib/motion";
 
 const About = () => {
+  useEffect(() => {
+    document.title = "About Phastor Limited | Concrete Products & Roofing Ghana";
+    const content = "Phastor Ltd, established in 1988, is Ghana's innovative, fast-growing concrete products and standing seam roofing manufacturer.";
+    let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (meta) {
+      meta.setAttribute("content", content);
+    } else {
+      meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = content;
+      document.head.appendChild(meta);
+    }
+    const canonicalHref = `${window.location.origin}/about`;
+    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (link) {
+      link.setAttribute("href", canonicalHref);
+    } else {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      link.setAttribute("href", canonicalHref);
+      document.head.appendChild(link);
+    }
+  }, []);
   const values = [
     {
-      icon: <Shield className="h-8 w-8" />,
-      title: "Quality First",
-      description: "We never compromise on quality. Every product undergoes rigorous testing to meet international standards.",
-    },
-    {
       icon: <Users className="h-8 w-8" />,
-      title: "Customer Focus",
-      description: "Our customers' success is our success. We provide personalized service and support throughout every project.",
+      title: "Excellent Customer Care",
+      description: "We serve our cherished customers with responsiveness, courtesy, and support.",
     },
     {
       icon: <Award className="h-8 w-8" />,
-      title: "Excellence",
-      description: "We strive for excellence in everything we do, from product manufacturing to customer service.",
+      title: "Respect for Customers",
+      description: "We treat every customer with respect and prioritize their needs in every engagement.",
+    },
+    {
+      icon: <Shield className="h-8 w-8" />,
+      title: "Doing the Right Thing",
+      description: "We uphold integrity, safety, and quality in our processes and decisions.",
     },
     {
       icon: <Building className="h-8 w-8" />,
-      title: "Innovation",
-      description: "We continuously invest in modern technology and innovative processes to deliver superior products.",
+      title: "Strong Relationships",
+      description: "We build lasting relationships with customers—growing together as one family.",
     },
   ];
 
   const achievements = [
     { number: "500+", label: "Projects Completed" },
     { number: "50+", label: "Happy Clients" },
-    { number: "10+", label: "Years of Experience" },
+    { number: "35+", label: "Years of Experience" },
     { number: "24/7", label: "Customer Support" },
   ];
 
@@ -88,15 +112,13 @@ const About = () => {
               className="text-4xl md:text-5xl font-bold mb-6"
               variants={fadeInUp}
             >
-              Building Ghana's Future with Quality Concrete Products
+              About Phastor Limited
             </motion.h1>
             <motion.p 
               className="text-xl max-w-3xl mx-auto opacity-90"
               variants={fadeInUp}
             >
-              Since 2015, Phastor Concrete Products Ltd has been a trusted partner 
-              in Ghana's construction industry, delivering premium concrete solutions 
-              that stand the test of time.
+              Phastor Ltd is Ghana's most innovative and fastest-growing manufacturer of concrete products and quality standing seam roofing, serving projects nationwide since 1988.
             </motion.p>
           </motion.div>
         </div>
@@ -124,21 +146,16 @@ const About = () => {
                 variants={staggerContainer}
               >
                 <motion.p variants={staggerItem}>
-                  Phastor Concrete Products Ltd was founded in 2015 with a simple mission: 
-                  to provide Ghana with the highest quality concrete products that contractors, 
-                  developers, and homeowners can trust.
+                  Phastor Limited was established in 1988 and has grown into one of Ghana's most innovative and fastest-growing manufacturers of concrete products and quality standing seam roofing.
                 </motion.p>
                 <motion.p variants={staggerItem}>
-                  What started as a small operation has grown into one of Ghana's most 
-                  reliable concrete product manufacturers. Our commitment to quality, 
-                  innovation, and customer satisfaction has earned us the trust of 
-                  hundreds of clients across the country.
+                  Our products meet Ghana Standards Authority requirements and international benchmarks, made possible by state-of-the-art technology and rigorous quality control.
                 </motion.p>
                 <motion.p variants={staggerItem}>
-                  Today, we operate state-of-the-art production facilities and maintain 
-                  a modern fleet of delivery vehicles to ensure your projects stay on 
-                  schedule. Our team of experienced professionals is dedicated to 
-                  providing you with the best products and service in the industry.
+                  We specialize in pre-stressed beams and ceiling blocks for storey buildings (PHASTOR KWICK FLOORS), culvert pipes, building blocks, pavement blocks, septic tanks, kerbs, walkway slabs, and more.
+                </motion.p>
+                <motion.p variants={staggerItem}>
+                  Beyond concrete, we also produce long span Aluzinc roofing sheets and undertake real estate development.
                 </motion.p>
               </motion.div>
 
@@ -230,9 +247,7 @@ const About = () => {
                       <h3 className="text-2xl font-bold text-primary">Our Mission</h3>
                     </motion.div>
                     <p className="text-muted-foreground leading-relaxed">
-                      To provide Ghana's construction industry with premium quality concrete 
-                      products that exceed expectations while maintaining the highest standards 
-                      of customer service, reliability, and environmental responsibility.
+                      To deliver quality concrete products to your doorstep at very affordable and competitive prices.
                     </p>
                   </CardContent>
                 </Card>
@@ -255,9 +270,7 @@ const About = () => {
                       <h3 className="text-2xl font-bold text-primary">Our Vision</h3>
                     </motion.div>
                     <p className="text-muted-foreground leading-relaxed">
-                      To be West Africa's leading manufacturer of concrete products, 
-                      recognized for innovation, quality, and our contribution to building 
-                      sustainable infrastructure that serves communities for generations.
+                      To be the first and preferred choice concrete products manufacturer and supplier within Ghana and beyond.
                     </p>
                   </CardContent>
                 </Card>
