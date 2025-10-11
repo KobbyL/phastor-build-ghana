@@ -93,10 +93,11 @@ const Header = () => {
               variants={buttonVariants}
             >
               <Button 
+                asChild
                 variant="outline" 
                 className="bg-transparent border-white text-white hover:bg-white hover:text-gray-800"
               >
-                Get a quote
+                <Link to="/contact">Get a quote</Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -183,11 +184,12 @@ const Header = () => {
                     </Link>
                   </div>
                   <Button 
+                    asChild
                     variant="outline" 
                     size="lg"
                     className="w-full bg-transparent border-white text-white hover:bg-white hover:text-gray-800 font-medium"
                   >
-                    Get a quote
+                    <Link to="/contact">Get a quote</Link>
                   </Button>
                 </motion.div>
               </nav>
