@@ -51,7 +51,7 @@ const About = () => {
   const achievements = [
     { number: "500+", label: "Projects Completed" },
     { number: "50+", label: "Happy Clients" },
-    { number: "10+", label: "Years of Experience" },
+    { number: "37+", label: "Years of Experience" },
     { number: "24/7", label: "Customer Support" },
   ];
 
@@ -124,21 +124,25 @@ const About = () => {
                 variants={staggerContainer}
               >
                 <motion.p variants={staggerItem}>
-                  Phastor Concrete Products Ltd was founded in 2015 with a simple mission: 
-                  to provide Ghana with the highest quality concrete products that contractors, 
-                  developers, and homeowners can trust.
+                  Established in 1988, Phastor Ltd began with a simple but powerful vision: 
+                  to deliver durable, high-quality building materials that builders and 
+                  homeowners across Ghana could trust. From our humble beginnings as a small 
+                  local operation, we've grown steadily, driven by innovation, integrity, 
+                  and a commitment to excellence.
                 </motion.p>
                 <motion.p variants={staggerItem}>
-                  What started as a small operation has grown into one of Ghana's most 
-                  reliable concrete product manufacturers. Our commitment to quality, 
-                  innovation, and customer satisfaction has earned us the trust of 
-                  hundreds of clients across the country.
+                  Over the years, our dedication to quality and customer satisfaction has 
+                  transformed Phastor Ltd into one of Ghana's most innovative and fastest-growing 
+                  manufacturers of concrete products and standing seam roofing.
                 </motion.p>
                 <motion.p variants={staggerItem}>
-                  Today, we operate state-of-the-art production facilities and maintain 
-                  a modern fleet of delivery vehicles to ensure your projects stay on 
-                  schedule. Our team of experienced professionals is dedicated to 
-                  providing you with the best products and service in the industry.
+                  Today, with 5 branches across the country, we continue to expand our reach 
+                  while staying true to our roots. We believe in building more than just 
+                  structures; we build relationships, reliability, and resilience.
+                </motion.p>
+                <motion.p variants={staggerItem}>
+                  Whether you're constructing a home, a commercial space, or an infrastructure 
+                  project, Phastor Ltd is your partner in progress.
                 </motion.p>
               </motion.div>
 

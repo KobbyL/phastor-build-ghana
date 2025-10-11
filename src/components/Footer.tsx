@@ -100,7 +100,6 @@ const Footer = () => {
               {[
                 { name: "About Us", href: "/about" },
                 { name: "Our Products", href: "/products" },
-                { name: "Projects", href: "/projects" },
                 { name: "Contact Us", href: "/contact" },
                 { name: "News & Tips", href: "/news" }
               ].map((link, index) => (
@@ -157,8 +156,7 @@ const Footer = () => {
               >
                 <MapPin className="h-4 w-4 mt-1 text-accent" />
                 <div>
-                  <p className="text-sm opacity-80">123 Industrial Area</p>
-                  <p className="text-sm opacity-80">Accra, Ghana</p>
+                  <p className="text-sm opacity-80">Weija Junction</p>
                 </div>
               </motion.div>
               <motion.div 
@@ -177,7 +175,7 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
               >
                 <Mail className="h-4 w-4 text-accent" />
-                <p className="text-sm opacity-80">info@phastor.com</p>
+                <p className="text-sm opacity-80">phastorgroup@gmail.com</p>
               </motion.div>
               <motion.div
                 key="whatsapp"
@@ -186,10 +184,12 @@ const Footer = () => {
                 whileTap="tap"
                 initial="initial"
               >
-                <Button className="w-full gap-2 bg-success hover:bg-success/90 mt-4">
-                  <MessageCircle className="h-4 w-4" />
-                  Chat on WhatsApp
-                </Button>
+                <a href="https://wa.me/+233552560460" target="_blank" rel="noopener noreferrer">
+                  <Button className="w-full gap-2 bg-success hover:bg-success/90 mt-4">
+                    <MessageCircle className="h-4 w-4" />
+                    Chat on WhatsApp
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
           </motion.div>

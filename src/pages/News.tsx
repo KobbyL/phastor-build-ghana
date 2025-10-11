@@ -416,10 +416,12 @@ const News = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
-                <MessageCircle className="h-5 w-5" />
-                Follow on WhatsApp
-              </Button>
+              <a href="https://wa.me/+233552560460" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90">
+                  <MessageCircle className="h-5 w-5" />
+                  Follow on WhatsApp
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
           <motion.p 

@@ -198,10 +198,12 @@ const Contact = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button size="lg" className="gap-2 bg-success hover:bg-success/90 text-white">
-                <MessageCircle className="h-5 w-5" />
-                WhatsApp +233 XX XXX XXXX
-              </Button>
+              <a href="https://wa.me/+233552560460" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="gap-2 bg-success hover:bg-success/90 text-white">
+                  <MessageCircle className="h-5 w-5" />
+                  WhatsApp +233 55 256 0460
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -526,13 +528,13 @@ const Contact = () => {
               className="text-3xl md:text-4xl font-bold text-primary mb-4"
               variants={fadeInUp}
             >
-              Visit Our Facility
+              Visit Our Head Office
             </motion.h2>
             <motion.p 
               className="text-lg text-muted-foreground"
               variants={fadeInUp}
             >
-              See our modern production facility and quality control processes in action.
+              Visit us at our head office in Weija to discuss your project requirements.
             </motion.p>
           </motion.div>
 
@@ -550,11 +552,11 @@ const Contact = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Phastor Limited Location"
+              title="Phastor Ltd Location"
               className="w-full h-96 md:h-[400px]"
             ></iframe>
             <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-              <p className="font-semibold text-sm">Phastor Limited</p>
+              <p className="font-semibold text-sm">Phastor Ltd</p>
               <p className="text-xs text-muted-foreground">Weija, Accra</p>
               <motion.a
                 href="https://maps.app.goo.gl/2H3YXdaczmguEy4m6"

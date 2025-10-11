@@ -310,7 +310,7 @@ const Home = () => {
 
           <motion.div className="grid md:grid-cols-4 gap-8" variants={staggerContainer}>
             {[{
-            number: "15+",
+            number: "37+",
             label: "Years Experience"
           }, {
             number: "500+",
@@ -500,10 +500,12 @@ const Home = () => {
           </motion.p>
           <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={staggerContainer}>
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-              <Button size="lg" className="gap-2 bg-primary hover:bg-primary/90">
-                <MessageCircle className="h-5 w-5" />
-                WhatsApp Us Now
-              </Button>
+              <a href="https://wa.me/+233552560460" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="gap-2 bg-primary hover:bg-primary/90">
+                  <MessageCircle className="h-5 w-5" />
+                  WhatsApp Us Now
+                </Button>
+              </a>
             </motion.div>
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
               <Button size="lg" variant="outline" className="gap-2 border-white text-gray-50 bg-amber-400 hover:bg-amber-300">

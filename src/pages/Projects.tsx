@@ -95,7 +95,7 @@ const Projects = () => {
     { number: "500+", label: "Projects Completed" },
     { number: "2M+", label: "Blocks Delivered" },
     { number: "50+", label: "Happy Clients" },
-    { number: "10+", label: "Years Experience" },
+    { number: "37+", label: "Years Experience" },
   ];
 
   return (
