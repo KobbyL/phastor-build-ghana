@@ -49,6 +49,7 @@ const About = () => {
       document.head.appendChild(link);
     }
   }, []);
+
   const values = [
     {
       icon: <Users className="h-8 w-8" />,
@@ -146,27 +147,6 @@ const About = () => {
                 variants={staggerContainer}
               >
                 <motion.p variants={staggerItem}>
-<<<<<<< HEAD
-                  Established in 1988, Phastor Ltd began with a simple but powerful vision: 
-                  to deliver durable, high-quality building materials that builders and 
-                  homeowners across Ghana could trust. From our humble beginnings as a small 
-                  local operation, we've grown steadily, driven by innovation, integrity, 
-                  and a commitment to excellence.
-                </motion.p>
-                <motion.p variants={staggerItem}>
-                  Over the years, our dedication to quality and customer satisfaction has 
-                  transformed Phastor Ltd into one of Ghana's most innovative and fastest-growing 
-                  manufacturers of concrete products and standing seam roofing.
-                </motion.p>
-                <motion.p variants={staggerItem}>
-                  Today, with 5 branches across the country, we continue to expand our reach 
-                  while staying true to our roots. We believe in building more than just 
-                  structures; we build relationships, reliability, and resilience.
-                </motion.p>
-                <motion.p variants={staggerItem}>
-                  Whether you're constructing a home, a commercial space, or an infrastructure 
-                  project, Phastor Ltd is your partner in progress.
-=======
                   Phastor Limited was established in 1988 and has grown into one of Ghana's most innovative and fastest-growing manufacturers of concrete products and quality standing seam roofing.
                 </motion.p>
                 <motion.p variants={staggerItem}>
@@ -177,7 +157,6 @@ const About = () => {
                 </motion.p>
                 <motion.p variants={staggerItem}>
                   Beyond concrete, we also produce long span Aluzinc roofing sheets and undertake real estate development.
->>>>>>> 9336e793e6e8eeb9d49e460dd8bfc44e5a4a1ab0
                 </motion.p>
               </motion.div>
 
@@ -471,7 +450,7 @@ const About = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button size="lg" variant="outline" className="gap-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button size="lg" variant="outline" className="gap-2 bg-black border-white text-white hover:bg-gray-900 hover:text-white">
                 <Users className="h-5 w-5" />
                 Meet Our Team
               </Button>

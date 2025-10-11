@@ -116,3 +116,4 @@ All tables have Row Level Security (RLS) enabled:
 Need help? The Supabase connection is already configured in your code. You just need to run the SQL setup script!
 
 
+

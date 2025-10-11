@@ -95,7 +95,7 @@ const Header = () => {
               <Button 
                 asChild
                 variant="outline" 
-                className="bg-transparent border-white text-white hover:bg-white hover:text-gray-800"
+                className="bg-black border-white text-white hover:bg-gray-900 hover:text-white"
               >
                 <Link to="/contact">Get a quote</Link>
               </Button>
@@ -187,7 +187,7 @@ const Header = () => {
                     asChild
                     variant="outline" 
                     size="lg"
-                    className="w-full bg-transparent border-white text-white hover:bg-white hover:text-gray-800 font-medium"
+                    className="w-full bg-black border-white text-white hover:bg-gray-900 hover:text-white font-medium"
                   >
                     <Link to="/contact">Get a quote</Link>
                   </Button>
