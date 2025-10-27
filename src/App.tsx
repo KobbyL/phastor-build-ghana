@@ -16,6 +16,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import AdminLogin from "./pages/AdminLogin";
 import ProductDetails from "./pages/ProductDetails";
+import ReadyMixConcrete from "./pages/ReadyMixConcrete";
 import NotFound from "./pages/NotFound";
 import { AdminLayout } from "./components/layouts/AdminLayout";
 import { ProductsPage } from "./pages/admin/Products";
@@ -38,6 +39,7 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/ready-mix-concrete" element={<ReadyMixConcrete />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         {/* <Route path="/projects" element={<Projects />} /> */}

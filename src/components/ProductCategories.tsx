@@ -8,7 +8,8 @@ import {
   Ruler, 
   Shield, 
   ArrowRight,
-  CheckCircle 
+  CheckCircle,
+  Truck
 } from "lucide-react";
 
 interface ProductCategoriesProps {
@@ -42,6 +43,14 @@ const ProductCategories = ({ onCategorySelect }: ProductCategoriesProps) => {
       gradient: "from-primary/80 to-accent/80"
     },
     {
+      id: "concrete",
+      name: "Ready Mix Concrete",
+      description: "Fresh concrete delivered to your construction site",
+      icon: <Truck className="h-8 w-8" />,
+      features: ["Various grades", "Fresh delivery", "GSA approved"],
+      gradient: "from-primary to-accent/90"
+    },
+    {
       id: "roofing",
       name: "Roofing Sheets",
       description: "Premium aluminum and corrugated roofing sheets",
@@ -66,7 +75,7 @@ const ProductCategories = ({ onCategorySelect }: ProductCategoriesProps) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {categories.map((category, index) => (
             <Card 
               key={category.id}

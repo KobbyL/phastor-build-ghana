@@ -126,7 +126,7 @@ const Footer = () => {
             >
               {[
                 "Hollow Blocks", "Solid Blocks", "U-Drains", 
-                "Culverts", "Paving Stones", "Custom Products"
+                "Culverts", "Paving Stones", "Ready Mix Concrete", "Custom Products"
               ].map((product) => (
                 <motion.li 
                   key={product}

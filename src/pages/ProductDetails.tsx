@@ -214,6 +214,38 @@ const ProductDetails = () => {
       ]
     },
     {
+      id: "ready-mix-concrete",
+      category: "concrete",
+      name: "Ready Mix Concrete",
+      description: "High-quality ready-mix concrete delivered fresh to your construction site for all your building needs.",
+      longDescription: "Our ready-mix concrete is professionally batched and delivered directly to your site, ensuring consistent quality and convenience. Available in various grades and mixes for different applications, our concrete meets all Ghana Standards Authority requirements. We offer flexible delivery schedules and quantities to match your project requirements.",
+      sizes: ["Grade 15 (1:2:4)", "Grade 20 (1:1.5:3)", "Grade 25 (1:1:2)", "Grade 30 (1:0.75:1.5)", "Custom mixes"],
+      applications: ["Foundation work", "Slabs and floors", "Columns and beams", "Road construction", "Mass concrete work", "Structural elements"],
+      price: 350.00,
+      priceText: "From GHS 350.00 per m³",
+      features: ["Fresh on delivery", "Consistent quality", "Various grades available", "GSA approved", "Professional mixing", "Flexible delivery"],
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
+      gallery: [
+        "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp"
+      ],
+      specifications: {
+        compressiveStrength: "15-40 MPa (grade dependent)",
+        slumpRange: "50-150mm",
+        cementContent: "250-400 kg/m³",
+        waterCementRatio: "0.45-0.65",
+        maxAggregateSize: "20-40mm",
+        settingTime: "2-4 hours",
+        cureTime: "28 days (full strength)"
+      },
+      benefits: [
+        "Consistent quality control",
+        "Time and labor savings",
+        "Reduced material waste",
+        "Professional mixing",
+        "Convenient delivery to site"
+      ]
+    },
+    {
       id: "interlocking-blocks",
       category: "blocks",
       name: "Interlocking Blocks",

@@ -190,7 +190,13 @@ const Home = () => {
       </motion.section>
 
       {/* Product Categories Section */}
-      <ProductCategories onCategorySelect={category => window.location.href = `/products?category=${category}`} />
+      <ProductCategories onCategorySelect={category => {
+        if (category === 'concrete') {
+          window.location.href = '/ready-mix-concrete';
+        } else {
+          window.location.href = `/products?category=${category}`;
+        }
+      }} />
 
       {/* Roofing Solutions Section */}
       <motion.section className="py-20 bg-concrete-light" initial="hidden" whileInView="visible" viewport={{

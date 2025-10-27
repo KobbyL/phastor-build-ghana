@@ -36,6 +36,13 @@ const sampleProducts: ProductInsert[] = [
     price: 8.50,
     category: "Paving Stones",
     stock_quantity: 2000
+  },
+  {
+    name: "Ready Mix Concrete - Grade 25",
+    description: "High-quality ready-mix concrete Grade 25, delivered fresh to your site",
+    price: 350.00,
+    category: "Ready Mix Concrete",
+    stock_quantity: 100
   }
 ];
 

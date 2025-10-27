@@ -83,6 +83,15 @@ const Products = () => {
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421667/paver-block-1643805619-6184337_hu8spg.jpg",
     },
     {
+      id: "ready-mix-concrete",
+      category: "concrete",
+      name: "Ready Mix Concrete",
+      description: "High-quality ready-mix concrete delivered to your site for all construction needs.",
+      price: 350.00,
+      priceText: "From GHS 350.00 per cubic meter",
+      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
+    },
+    {
       id: "interlocking-blocks",
       category: "paving",
       name: "Interlocking Blocks",
@@ -224,7 +233,7 @@ const Products = () => {
                 variants={staggerItem}
                 whileHover="hover"
               >
-                <Link to={`/products/${product.id}`} className="block">
+                <Link to={product.id === 'ready-mix-concrete' ? '/ready-mix-concrete' : `/products/${product.id}`} className="block">
                   <Card className="h-full overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300">
                   <div className="relative overflow-hidden">
                     <img
@@ -272,7 +281,11 @@ const Products = () => {
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            navigate(`/products/${product.id}`);
+                            if (product.id === 'ready-mix-concrete') {
+                              navigate('/ready-mix-concrete');
+                            } else {
+                              navigate(`/products/${product.id}`);
+                            }
                           }}
                           variant="outline"
                           size="sm"

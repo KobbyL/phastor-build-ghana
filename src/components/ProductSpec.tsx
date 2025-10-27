@@ -66,6 +66,12 @@ const ProductSpec = ({ product, onAddToCart }: ProductSpecProps) => {
       abrasionResistance: "Class 4",
       frostResistance: "F4",
     },
+    "Ready Mix Concrete": {
+      compressiveStrength: "15-40 MPa",
+      slump: "50-150mm",
+      cementContent: "250-400 kg/m³",
+      settingTime: "2-4 hours",
+    },
     "Interlocking Blocks": {
       strength: "20-30 MPa",
       interlockForce: "High",
