@@ -6,15 +6,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { 
-  ArrowLeft, 
-  ShoppingCart, 
-  Download, 
-  MessageCircle, 
+import {
+  ArrowLeft,
+  ShoppingCart,
+  Download,
+  MessageCircle,
   Phone,
-  Ruler, 
-  Shield, 
-  Truck, 
+  Ruler,
+  Shield,
+  Truck,
   Weight,
   CheckCircle,
   Star,
@@ -48,8 +48,7 @@ const ProductDetails = () => {
       longDescription: "Our premium hollow blocks are manufactured using high-grade concrete and advanced production techniques. These blocks feature hollow cores that provide excellent thermal insulation while maintaining structural integrity. Perfect for both load-bearing and non-load-bearing walls, they offer significant cost savings in construction while ensuring superior performance.",
       sizes: ["6 inch (150mm)", "8 inch (200mm)", "9 inch (225mm)", "12 inch (300mm)"],
       applications: ["Wall construction", "Partition walls", "Load-bearing walls", "Exterior walls", "Interior walls"],
-      price: 2.50,
-      priceText: "From GHS 2.50 per block",
+
       features: ["Lightweight", "High strength", "Thermal insulation", "Sound dampening", "Fire resistant", "Cost-effective"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
       gallery: [
@@ -83,8 +82,7 @@ const ProductDetails = () => {
       longDescription: "Our solid concrete blocks are engineered for maximum strength and durability, making them ideal for structural applications where load-bearing capacity is critical. These blocks are manufactured using high-density concrete and undergo rigorous quality control to ensure they meet or exceed industry standards.",
       sizes: ["4 inch (100mm)", "6 inch (150mm)", "8 inch (200mm)"],
       applications: ["Foundation walls", "Retaining walls", "Structural walls", "Basement walls", "Heavy-duty construction"],
-      price: 3.00,
-      priceText: "From GHS 3.00 per block",
+
       features: ["Maximum strength", "Weather resistant", "Fire resistant", "Long-lasting", "High density", "Structural integrity"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420961/constronics-blocks-and-bricks-12-03-2021-01-222972614-954t8_rs9ctt.avif",
       gallery: [
@@ -119,8 +117,7 @@ const ProductDetails = () => {
       longDescription: "Our U-drains are precision-engineered drainage solutions designed for efficient water management in various environments. These precast concrete channels feature smooth internal surfaces for optimal water flow and are reinforced for durability under heavy loads.",
       sizes: ["300mm width", "450mm width", "600mm width", "Custom sizes"],
       applications: ["Road drainage", "Residential drainage", "Commercial drainage", "Industrial drainage", "Agricultural drainage"],
-      price: 45.00,
-      priceText: "From GHS 45.00 per meter",
+
       features: ["Easy installation", "Durable", "Smooth water flow", "Cost-effective", "Load-bearing", "Weather resistant"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421164/c11336bc9097be247e9b9fad2ded43b3_1739411046_ggitgc.webp",
       gallery: [
@@ -152,8 +149,7 @@ const ProductDetails = () => {
       longDescription: "Our heavy-duty culverts are designed for major infrastructure projects where reliability and durability are paramount. These precast concrete culverts are engineered to withstand extreme loads and harsh environmental conditions while providing efficient water flow.",
       sizes: ["600mm diameter", "900mm diameter", "1200mm diameter", "Custom sizes"],
       applications: ["Road crossings", "Bridge drainage", "Large infrastructure", "Highway drainage", "Railway drainage"],
-      price: 350.00,
-      priceText: "From GHS 350.00 per meter",
+
       features: ["Heavy-duty", "Load-bearing", "Weather resistant", "Long service life", "High strength", "Corrosion resistant"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421370/1K8A9877_x0qf2g.jpg",
       gallery: [
@@ -187,8 +183,7 @@ const ProductDetails = () => {
       longDescription: "Our paving stones combine aesthetic appeal with functional performance, creating beautiful and durable outdoor surfaces. Available in various patterns, colors, and textures, these interlocking stones provide excellent drainage and are designed to withstand heavy foot and vehicle traffic.",
       sizes: ["200x100x60mm", "200x200x60mm", "300x300x60mm", "Custom patterns"],
       applications: ["Driveways", "Walkways", "Patios", "Public spaces", "Commercial areas", "Residential landscaping"],
-      price: 18.00,
-      priceText: "From GHS 18.00 per m²",
+
       features: ["Non-slip surface", "Weather resistant", "Easy maintenance", "Attractive finish", "Interlocking design", "Permeable"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421886/interlocking-driveway-bricks-qm2qy3yobu923zbyz7oy9pplv0wxyxfd67t5yr7b4s_nmvuef.jpg",
       gallery: [
@@ -221,8 +216,7 @@ const ProductDetails = () => {
       longDescription: "Our ready-mix concrete is professionally batched and delivered directly to your site, ensuring consistent quality and convenience. Available in various grades and mixes for different applications, our concrete meets all Ghana Standards Authority requirements. We offer flexible delivery schedules and quantities to match your project requirements.",
       sizes: ["Grade 15 (1:2:4)", "Grade 20 (1:1.5:3)", "Grade 25 (1:1:2)", "Grade 30 (1:0.75:1.5)", "Custom mixes"],
       applications: ["Foundation work", "Slabs and floors", "Columns and beams", "Road construction", "Mass concrete work", "Structural elements"],
-      price: 350.00,
-      priceText: "From GHS 350.00 per m³",
+
       features: ["Fresh on delivery", "Consistent quality", "Various grades available", "GSA approved", "Professional mixing", "Flexible delivery"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
       gallery: [
@@ -253,8 +247,7 @@ const ProductDetails = () => {
       longDescription: "Our interlocking blocks feature a unique design that allows them to lock together without mortar, enabling rapid construction while maintaining structural integrity. These blocks are perfect for temporary structures, emergency housing, and projects requiring quick assembly.",
       sizes: ["Standard 390x190x190mm", "Half block 190x190x190mm"],
       applications: ["Quick construction", "Temporary structures", "Emergency housing", "Modular buildings", "Retaining walls"],
-      price: 3.50,
-      priceText: "From GHS 3.50 per block",
+
       features: ["No mortar needed", "Quick installation", "Reusable", "Cost-effective", "Modular design", "Easy disassembly"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421667/paver-block-1643805619-6184337_hu8spg.jpg",
       gallery: [
@@ -287,8 +280,7 @@ const ProductDetails = () => {
       longDescription: "Our premium aluminum roofing sheets are manufactured from high-grade aluminum alloy, offering superior corrosion resistance and longevity. These sheets are lightweight yet strong, making them ideal for both residential and commercial roofing applications. The natural oxide layer provides excellent weather protection.",
       sizes: ["0.5mm thickness", "0.7mm thickness", "0.9mm thickness", "Custom lengths available"],
       applications: ["Residential roofing", "Commercial buildings", "Industrial structures", "Agricultural buildings", "Canopies and awnings"],
-      price: 45.00,
-      priceText: "From GHS 45.00 per m²",
+
       features: ["Corrosion resistant", "Lightweight", "Recyclable", "Low maintenance", "Thermal efficient", "Fire resistant"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422029/image_kr0jzj.webp",
       gallery: [
@@ -321,8 +313,7 @@ const ProductDetails = () => {
       longDescription: "Our galvanized steel sheets feature a protective zinc coating that provides excellent corrosion resistance and longevity. These sheets are ideal for harsh weather conditions and offer exceptional strength-to-weight ratio, making them perfect for various roofing applications.",
       sizes: ["0.4mm thickness", "0.5mm thickness", "0.7mm thickness", "Standard 3m lengths"],
       applications: ["Industrial roofing", "Warehouse construction", "Agricultural buildings", "Residential roofing", "Shed construction"],
-      price: 35.00,
-      priceText: "From GHS 35.00 per m²",
+
       features: ["Zinc coated", "High strength", "Weather resistant", "Cost effective", "Easy installation", "Fire resistant"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422125/GI-Roof-Panels_cuslve.jpg",
       gallery: [
@@ -355,8 +346,7 @@ const ProductDetails = () => {
       longDescription: "Our corrugated roofing sheets feature the traditional wave pattern that provides excellent structural strength and water drainage. These sheets are manufactured to precise specifications and offer reliable performance in various weather conditions.",
       sizes: ["Standard corrugation", "Deep corrugation", "Custom profiles", "Various lengths"],
       applications: ["Industrial roofing", "Farm buildings", "Workshops", "Storage facilities", "Residential extensions"],
-      price: 28.00,
-      priceText: "From GHS 28.00 per m²",
+
       features: ["Corrugated profile", "Water drainage", "Structural strength", "Versatile", "Traditional design", "Cost effective"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422241/coloured-roofing-sheet-500x500-1_jvwf2h.jpg",
       gallery: [
@@ -389,8 +379,7 @@ const ProductDetails = () => {
       longDescription: "Our polycarbonate sheets offer the perfect combination of transparency and durability. These sheets allow natural light to pass through while providing excellent weather protection. They are virtually unbreakable and offer superior impact resistance compared to glass.",
       sizes: ["4mm twin-wall", "6mm twin-wall", "10mm twin-wall", "Solid sheets available"],
       applications: ["Skylights", "Canopies", "Greenhouses", "Carports", "Walkway covers", "Patio roofing"],
-      price: 55.00,
-      priceText: "From GHS 55.00 per m²",
+
       features: ["UV protected", "Impact resistant", "Lightweight", "Transparent", "Thermal insulation", "Easy to cut"],
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422030/aluminum-roofing-sheet_qhehfr.jpg",
       gallery: [
@@ -431,7 +420,7 @@ const ProductDetails = () => {
       addToCart({
         id: product.id,
         name: product.name,
-        price: product.price,
+        price: 0,
         image: product.image,
         description: product.description,
         category: product.category,
@@ -441,7 +430,6 @@ const ProductDetails = () => {
         sizes: product.sizes,
         applications: product.applications,
         features: product.features,
-        priceText: product.priceText
       }, quantity);
 
       toast({
@@ -466,7 +454,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <motion.div 
+    <motion.div
       className="min-h-screen bg-background pt-20"
       initial="hidden"
       animate="visible"
@@ -475,8 +463,8 @@ const ProductDetails = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <motion.div variants={staggerItem} className="mb-6">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={() => navigate("/products")}
             className="gap-2"
           >
@@ -486,7 +474,7 @@ const ProductDetails = () => {
         </motion.div>
 
         {/* Product Header */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12"
           variants={staggerContainer}
         >
@@ -527,11 +515,6 @@ const ProductDetails = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-primary">
-                  {product.priceText}
-                </span>
-              </div>
 
               <div className="flex items-center gap-4">
                 <Select value={quantity.toString()} onValueChange={(value) => setQuantity(parseInt(value))}>
@@ -546,7 +529,7 @@ const ProductDetails = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                <Button 
+                <Button
                   onClick={handleAddToCart}
                   className="flex-1 gap-2"
                   size="lg"
@@ -577,7 +560,7 @@ const ProductDetails = () => {
         <Separator className="my-12" />
 
         {/* Detailed Information */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-3 gap-8"
           variants={staggerContainer}
         >
@@ -645,7 +628,7 @@ const ProductDetails = () => {
         </motion.div>
 
         {/* CTA Section */}
-        <motion.div 
+        <motion.div
           className="mt-12 bg-primary text-primary-foreground rounded-lg p-8 text-center"
           variants={staggerItem}
         >

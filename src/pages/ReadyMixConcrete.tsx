@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Truck, 
-  CheckCircle, 
-  Clock, 
+import {
+  Truck,
+  CheckCircle,
+  Clock,
   Shield,
   TrendingUp,
   DollarSign,
@@ -16,11 +16,11 @@ import {
   Award,
   ArrowRight
 } from "lucide-react";
-import { 
-  fadeInUp, 
-  fadeInLeft, 
-  fadeInRight, 
-  staggerContainer, 
+import {
+  fadeInUp,
+  fadeInLeft,
+  fadeInRight,
+  staggerContainer,
   staggerItem,
   scaleIn
 } from "@/lib/motion";
@@ -31,27 +31,27 @@ const ReadyMixConcrete = () => {
       name: "Grade 15 (1:2:4)",
       strength: "15 MPa",
       applications: ["Mass concrete work", "Blinding", "Non-structural elements"],
-      price: "GHS 320.00/m³"
+
     },
     {
       name: "Grade 20 (1:1.5:3)",
       strength: "20 MPa",
       applications: ["Floor slabs", "Pathways", "Light foundations"],
-      price: "GHS 350.00/m³",
+
       popular: true
     },
     {
       name: "Grade 25 (1:1:2)",
       strength: "25 MPa",
       applications: ["Structural elements", "Beams", "Columns"],
-      price: "GHS 380.00/m³",
+
       popular: true
     },
     {
       name: "Grade 30 (1:0.75:1.5)",
       strength: "30 MPa",
       applications: ["High-strength structures", "Heavy-duty floors", "Commercial buildings"],
-      price: "GHS 420.00/m³"
+
     }
   ];
 
@@ -113,19 +113,19 @@ const ReadyMixConcrete = () => {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       className="min-h-screen"
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
     >
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20"
         variants={fadeInUp}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center"
             variants={staggerContainer}
           >
@@ -135,20 +135,20 @@ const ReadyMixConcrete = () => {
                 Ready Mix Concrete
               </Badge>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-6xl font-bold mb-6"
               variants={fadeInUp}
             >
               Fresh Concrete Delivered to Your Site
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl max-w-3xl mx-auto opacity-90 mb-8"
               variants={fadeInUp}
             >
-              Professional-grade ready-mix concrete for all your construction needs. 
+              Professional-grade ready-mix concrete for all your construction needs.
               Consistent quality, flexible delivery, and expert support.
             </motion.p>
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
               variants={staggerContainer}
             >
@@ -174,7 +174,7 @@ const ReadyMixConcrete = () => {
       </motion.section>
 
       {/* Concrete Grades */}
-      <motion.section 
+      <motion.section
         className="py-20"
         initial="hidden"
         whileInView="visible"
@@ -191,7 +191,7 @@ const ReadyMixConcrete = () => {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
             variants={staggerContainer}
           >
@@ -211,7 +211,7 @@ const ReadyMixConcrete = () => {
                   <CardContent className="p-6">
                     <h3 className="text-xl font-bold mb-2">{grade.name}</h3>
                     <div className="text-3xl font-bold text-accent mb-4">{grade.strength}</div>
-                    <div className="text-2xl font-semibold text-primary mb-4">{grade.price}</div>
+
                     <div className="space-y-2 mb-4">
                       <p className="text-sm font-semibold text-muted-foreground">Best For:</p>
                       {grade.applications.map((app, i) => (
@@ -234,7 +234,7 @@ const ReadyMixConcrete = () => {
       </motion.section>
 
       {/* Benefits Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-concrete-light"
         initial="hidden"
         whileInView="visible"
@@ -251,7 +251,7 @@ const ReadyMixConcrete = () => {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
           >
@@ -276,7 +276,7 @@ const ReadyMixConcrete = () => {
       </motion.section>
 
       {/* Features & Specifications */}
-      <motion.section 
+      <motion.section
         className="py-20"
         initial="hidden"
         whileInView="visible"
@@ -329,7 +329,7 @@ const ReadyMixConcrete = () => {
       </motion.section>
 
       {/* How It Works */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-concrete-light"
         initial="hidden"
         whileInView="visible"
@@ -346,7 +346,7 @@ const ReadyMixConcrete = () => {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-4 gap-8"
             variants={staggerContainer}
           >
@@ -378,7 +378,7 @@ const ReadyMixConcrete = () => {
       </motion.section>
 
       {/* CTA Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-primary text-primary-foreground"
         initial="hidden"
         whileInView="visible"
@@ -386,20 +386,20 @@ const ReadyMixConcrete = () => {
         variants={staggerContainer}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-bold mb-6"
             variants={fadeInUp}
           >
             Ready to Order?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-xl mb-8 opacity-90"
             variants={fadeInUp}
           >
-            Get fresh, high-quality concrete delivered to your construction site. 
+            Get fresh, high-quality concrete delivered to your construction site.
             Our team is ready to help you choose the right grade for your project.
           </motion.p>
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             variants={staggerContainer}
           >
