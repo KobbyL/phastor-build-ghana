@@ -7,7 +7,7 @@ import { fadeInUp, staggerContainer, staggerItem, hoverScale, buttonVariants } f
 
 const Footer = () => {
   return (
-    <motion.footer 
+    <motion.footer
       className="bg-primary text-primary-foreground"
       initial="hidden"
       whileInView="visible"
@@ -16,25 +16,25 @@ const Footer = () => {
       key="main-footer"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={staggerContainer}
           key="footer-grid"
         >
           {/* Company Info */}
-          <motion.div 
+          <motion.div
             key="company-info"
             className="space-y-4"
             variants={staggerItem}
           >
-            <motion.div 
+            <motion.div
               key="logo"
               className="flex items-center"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
               <Link to="/" className="flex items-center">
-                <motion.img 
+                <motion.img
                   src="https://res.cloudinary.com/dhs1h58bs/image/upload/v1754218343/CONCRETE_PRODUCTS_sxhdb3.png"
                   alt="Phastor Logo"
                   className="h-16 w-auto"
@@ -44,29 +44,29 @@ const Footer = () => {
               </Link>
             </motion.div>
             <p className="text-sm opacity-80 max-w-xs">
-              Your trusted partner for quality concrete products in Ghana. 
+              Your trusted partner for quality concrete products in Ghana.
               Building the future with excellence and reliability.
             </p>
-            <motion.div 
+            <motion.div
               key="social-links"
               className="flex space-x-3"
               variants={staggerContainer}
             >
               {[
-                { 
-                  icon: Facebook, 
-                  href: "https://www.facebook.com/profile.php?id=100086429667000", 
-                  name: "facebook" 
+                {
+                  icon: Facebook,
+                  href: "https://www.facebook.com/profile.php?id=100086429667000",
+                  name: "facebook"
                 },
-                { 
-                  icon: Instagram, 
-                  href: "https://www.instagram.com/phastorltd/", 
-                  name: "instagram" 
+                {
+                  icon: Instagram,
+                  href: "https://www.instagram.com/phastorltd/",
+                  name: "instagram"
                 },
-                { 
-                  icon: SiTiktok, 
-                  href: "https://www.tiktok.com/@phastorltd", 
-                  name: "tiktok" 
+                {
+                  icon: SiTiktok,
+                  href: "https://www.tiktok.com/@phastorltd",
+                  name: "tiktok"
                 }
               ].map((social, index) => (
                 <motion.div
@@ -93,7 +93,7 @@ const Footer = () => {
           {/* Quick Links */}
           <motion.div key="quick-links" variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <motion.ul 
+            <motion.ul
               className="space-y-2"
               variants={staggerContainer}
             >
@@ -103,7 +103,7 @@ const Footer = () => {
                 { name: "Contact Us", href: "/contact" },
                 { name: "News & Tips", href: "/news" }
               ].map((link, index) => (
-                <motion.li 
+                <motion.li
                   key={link.name}
                   variants={staggerItem}
                   whileHover={{ x: 5 }}
@@ -120,22 +120,29 @@ const Footer = () => {
           {/* Products */}
           <motion.div key="products" variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Our Products</h3>
-            <motion.ul 
+            <motion.ul
               className="space-y-2"
               variants={staggerContainer}
             >
               {[
-                "Hollow Blocks", "Solid Blocks", "U-Drains", 
-                "Culverts", "Paving Stones", "Ready Mix Concrete", "Custom Products"
+                { name: "Hollow Blocks", href: "/products/hollow-blocks" },
+                { name: "Solid Blocks", href: "/products/solid-blocks" },
+                { name: "U-Drains", href: "/products/u-drains" },
+                { name: "Culverts", href: "/products/culverts" },
+                { name: "Paving Stones", href: "/products/paving-stones" },
+                { name: "Ready Mix Concrete", href: "/ready-mix-concrete" },
+                { name: "Roofing Sheets", href: "/products/aluminum-sheets" },
               ].map((product) => (
-                <motion.li 
-                  key={product}
+                <motion.li
+                  key={product.name}
                   className="text-sm opacity-80"
                   variants={staggerItem}
                   whileHover={{ x: 5, opacity: 1 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {product}
+                  <Link to={product.href} className="hover:underline">
+                    {product.name}
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>
@@ -144,11 +151,11 @@ const Footer = () => {
           {/* Contact Info */}
           <motion.div key="contact-info" variants={staggerItem}>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <motion.div 
+            <motion.div
               className="space-y-3"
               variants={staggerContainer}
             >
-              <motion.div 
+              <motion.div
                 key="address"
                 className="flex items-start gap-3"
                 variants={staggerItem}
@@ -159,7 +166,7 @@ const Footer = () => {
                   <p className="text-sm opacity-80">Weija Junction</p>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 key="phone"
                 className="flex items-center gap-3"
                 variants={staggerItem}
@@ -168,7 +175,7 @@ const Footer = () => {
                 <Phone className="h-4 w-4 text-accent" />
                 <p className="text-sm opacity-80">0552560460</p>
               </motion.div>
-              <motion.div 
+              <motion.div
                 key="email"
                 className="flex items-center gap-3"
                 variants={staggerItem}
@@ -195,7 +202,7 @@ const Footer = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="border-t border-primary-foreground/20 mt-8 pt-8 text-center"
           variants={fadeInUp}
           key="footer-copyright"

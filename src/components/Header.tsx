@@ -16,6 +16,7 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Products", href: "/products" },
+    { name: "Ready Mix Concrete", href: "/ready-mix-concrete" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
@@ -25,7 +26,7 @@ const Header = () => {
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <motion.header 
+    <motion.header
       className="main-header fixed top-0 left-0 right-0 z-50 w-full bg-black/20 backdrop-blur-md border-b border-white/10"
       initial="hidden"
       animate="visible"
@@ -39,7 +40,7 @@ const Header = () => {
             variants={hoverScale}
           >
             <Link to="/" className="flex items-center">
-              <motion.img 
+              <motion.img
                 src="https://res.cloudinary.com/dhs1h58bs/image/upload/v1754218343/CONCRETE_PRODUCTS_sxhdb3.png"
                 alt="Phastor Logo"
                 className="h-12 w-auto"
@@ -60,11 +61,10 @@ const Header = () => {
               >
                 <Link
                   to={item.href}
-                  className={`text-sm font-medium transition-colors ${
-                    isActive(item.href)
+                  className={`text-sm font-medium transition-colors ${isActive(item.href)
                       ? "text-white border-b-2 border-white"
                       : "text-white/80 hover:text-white"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -75,7 +75,7 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <motion.div 
+          <motion.div
             className="hidden lg:flex items-center space-x-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -92,9 +92,9 @@ const Header = () => {
               whileTap="tap"
               variants={buttonVariants}
             >
-              <Button 
+              <Button
                 asChild
-                variant="outline" 
+                variant="outline"
                 className="bg-black border-white text-white hover:bg-gray-900 hover:text-white"
               >
                 <Link to="/contact">Get a quote</Link>
@@ -138,7 +138,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               className="lg:hidden py-6 bg-black/80 backdrop-blur-md rounded-lg mt-2 border border-white/10"
               variants={mobileMenuVariants}
               initial="hidden"
@@ -156,19 +156,18 @@ const Header = () => {
                   >
                     <Link
                       to={item.href}
-                      className={`text-base font-medium transition-colors block ${
-                        isActive(item.href)
+                      className={`text-base font-medium transition-colors block ${isActive(item.href)
                           ? "text-white"
                           : "text-white/80 hover:text-white"
-                      }`}
+                        }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
                   </motion.div>
                 ))}
-                
-                <motion.div 
+
+                <motion.div
                   className="pt-6 mt-4 border-t border-white/10 flex flex-col gap-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -183,9 +182,9 @@ const Header = () => {
                       )}
                     </Link>
                   </div>
-                  <Button 
+                  <Button
                     asChild
-                    variant="outline" 
+                    variant="outline"
                     size="lg"
                     className="w-full bg-black border-white text-white hover:bg-gray-900 hover:text-white font-medium"
                   >

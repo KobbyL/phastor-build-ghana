@@ -11,7 +11,8 @@ import {
   Home,
   Factory,
   Ruler,
-  Shield
+  Shield,
+  Truck
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -34,6 +35,7 @@ const Products = () => {
     { id: "drainage", name: "Drainage", icon: <Factory className="h-4 w-4" /> },
     { id: "paving", name: "Paving", icon: <Ruler className="h-4 w-4" /> },
     { id: "roofing", name: "Roofing", icon: <Shield className="h-4 w-4" /> },
+    { id: "concrete", name: "Concrete", icon: <Truck className="h-4 w-4" /> },
   ];
 
   const products = [
@@ -196,8 +198,8 @@ const Products = () => {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${selectedCategory === category.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted hover:bg-muted/80"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted hover:bg-muted/80"
                   }`}
                 variants={staggerItem}
                 whileHover={{ scale: 1.05 }}
