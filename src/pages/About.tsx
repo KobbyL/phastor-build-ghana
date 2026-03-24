@@ -27,8 +27,8 @@ import {
 
 const About = () => {
   useEffect(() => {
-    document.title = "About Phastor Limited | Concrete Products & Roofing Ghana";
-    const content = "Phastor Ltd, established in 1988, is Ghana's innovative, fast-growing concrete products and standing seam roofing manufacturer.";
+    document.title = "About Phastor Limited | Concrete Products Ghana";
+    const content = "Phastor Ltd, established in 1988, is Ghana's innovative, fast-growing concrete products manufacturer.";
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     if (meta) {
       meta.setAttribute("content", content);
@@ -119,7 +119,7 @@ const About = () => {
               className="text-xl max-w-3xl mx-auto opacity-90"
               variants={fadeInUp}
             >
-              Phastor Ltd is Ghana's most innovative and fastest-growing manufacturer of concrete products and quality standing seam roofing, serving projects nationwide since 1988.
+              Phastor Ltd is Ghana's most innovative and fastest-growing manufacturer of concrete products, serving projects nationwide since 1988.
             </motion.p>
           </motion.div>
         </div>
@@ -147,7 +147,7 @@ const About = () => {
                 variants={staggerContainer}
               >
                 <motion.p variants={staggerItem}>
-                  Phastor Limited was established in 1988 and has grown into one of Ghana's most innovative and fastest-growing manufacturers of concrete products and quality standing seam roofing.
+                  Phastor Limited was established in 1988 and has grown into one of Ghana's most innovative and fastest-growing manufacturers of concrete products.
                 </motion.p>
                 <motion.p variants={staggerItem}>
                   Our products meet Ghana Standards Authority requirements and international benchmarks, made possible by state-of-the-art technology and rigorous quality control.
@@ -156,7 +156,7 @@ const About = () => {
                   We specialize in pre-stressed beams and ceiling blocks for storey buildings (PHASTOR KWICK FLOORS), culvert pipes, building blocks, pavement blocks, septic tanks, kerbs, walkway slabs, and more.
                 </motion.p>
                 <motion.p variants={staggerItem}>
-                  Beyond concrete, we also produce long span Aluzinc roofing sheets and undertake real estate development.
+                  Beyond concrete, we also support clients with dependable delivery, technical guidance, and real estate development services.
                 </motion.p>
               </motion.div>
 

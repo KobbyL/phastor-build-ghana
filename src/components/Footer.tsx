@@ -131,7 +131,6 @@ const Footer = () => {
                 { name: "Culverts", href: "/products/culverts" },
                 { name: "Paving Stones", href: "/products/paving-stones" },
                 { name: "Ready Mix Concrete", href: "/ready-mix-concrete" },
-                { name: "Roofing Sheets", href: "/products/aluminum-sheets" },
               ].map((product) => (
                 <motion.li
                   key={product.name}

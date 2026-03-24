@@ -11,11 +11,11 @@ import {
   Home,
   Factory,
   Ruler,
-  Shield,
   Truck
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
+import projectIndustrialImage from "@/assets/project-industrial.jpg";
 import {
   fadeInUp,
   staggerContainer,
@@ -34,7 +34,6 @@ const Products = () => {
     { id: "blocks", name: "Blocks", icon: <Home className="h-4 w-4" /> },
     { id: "drainage", name: "Drainage", icon: <Factory className="h-4 w-4" /> },
     { id: "paving", name: "Paving", icon: <Ruler className="h-4 w-4" /> },
-    { id: "roofing", name: "Roofing", icon: <Shield className="h-4 w-4" /> },
     { id: "concrete", name: "Concrete", icon: <Truck className="h-4 w-4" /> },
   ];
 
@@ -85,7 +84,7 @@ const Products = () => {
       name: "Ready Mix Concrete",
       description: "High-quality ready-mix concrete delivered to your site for all construction needs.",
 
-      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
+      image: projectIndustrialImage,
     },
     {
       id: "interlocking-blocks",
@@ -94,38 +93,6 @@ const Products = () => {
       description: "Versatile interlocking concrete blocks for various applications.",
 
       image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754421886/interlocking-driveway-bricks-qm2qy3yobu923zbyz7oy9pplv0wxyxfd67t5yr7b4s_nmvuef.jpg",
-    },
-    {
-      id: "aluminum-sheets",
-      category: "roofing",
-      name: "Aluminum Roofing Sheets",
-      description: "Lightweight, corrosion-resistant aluminum sheets with excellent durability.",
-
-      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422029/image_kr0jzj.webp",
-    },
-    {
-      id: "galvanized-sheets",
-      category: "roofing",
-      name: "Galvanized Steel Sheets",
-      description: "Durable galvanized steel roofing sheets for long-lasting protection.",
-
-      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422125/GI-Roof-Panels_cuslve.jpg",
-    },
-    {
-      id: "corrugated-sheets",
-      category: "roofing",
-      name: "Corrugated Roofing Sheets",
-      description: "Classic corrugated metal sheets perfect for industrial and residential use.",
-
-      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422241/coloured-roofing-sheet-500x500-1_jvwf2h.jpg",
-    },
-    {
-      id: "polycarbonate-sheets",
-      category: "roofing",
-      name: "Polycarbonate Sheets",
-      description: "Transparent polycarbonate sheets for natural lighting and weather protection.",
-
-      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754422030/aluminum-roofing-sheet_qhehfr.jpg",
     },
   ];
 

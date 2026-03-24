@@ -3,10 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
   Building, 
-  Home, 
   Factory, 
   Ruler, 
-  Shield, 
   ArrowRight,
   CheckCircle,
   Truck
@@ -49,14 +47,6 @@ const ProductCategories = ({ onCategorySelect }: ProductCategoriesProps) => {
       icon: <Truck className="h-8 w-8" />,
       features: ["Various grades", "Fresh delivery", "GSA approved"],
       gradient: "from-primary to-accent/90"
-    },
-    {
-      id: "roofing",
-      name: "Roofing Sheets",
-      description: "Premium aluminum and corrugated roofing sheets",
-      icon: <Shield className="h-8 w-8" />,
-      features: ["Lightweight", "Corrosion resistant", "Long lasting"],
-      gradient: "from-accent/80 to-primary/80"
     }
   ];
 
@@ -71,11 +61,11 @@ const ProductCategories = ({ onCategorySelect }: ProductCategoriesProps) => {
             Explore Our Product Range
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
-            From foundation to roof, we provide comprehensive construction solutions
+            From foundations to finishing works, we provide comprehensive concrete construction solutions
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {categories.map((category, index) => (
             <Card 
               key={category.id}

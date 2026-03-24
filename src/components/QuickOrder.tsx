@@ -26,8 +26,6 @@ const QuickOrder = () => {
     { value: "u-drains", label: "U-Drains" },
     { value: "culverts", label: "Culverts" },
     { value: "ready-mix-concrete", label: "Ready Mix Concrete" },
-    { value: "aluminum-sheets", label: "Aluminum Roofing Sheets" },
-    { value: "corrugated-sheets", label: "Corrugated Roofing Sheets" },
     { value: "custom", label: "Custom Product" }
   ];
 

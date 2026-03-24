@@ -31,6 +31,7 @@ import {
   buttonVariants
 } from "@/lib/motion";
 import { useCart } from "@/components/CartContext";
+import projectIndustrialImage from "@/assets/project-industrial.jpg";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -218,9 +219,9 @@ const ProductDetails = () => {
       applications: ["Foundation work", "Slabs and floors", "Columns and beams", "Road construction", "Mass concrete work", "Structural elements"],
 
       features: ["Fresh on delivery", "Consistent quality", "Various grades available", "GSA approved", "Professional mixing", "Flexible delivery"],
-      image: "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp",
+      image: projectIndustrialImage,
       gallery: [
-        "https://res.cloudinary.com/dhs1h58bs/image/upload/v1754420729/hollow_blocks_over_pallets_txroam.webp"
+        projectIndustrialImage
       ],
       specifications: {
         compressiveStrength: "15-40 MPa (grade dependent)",
@@ -406,7 +407,16 @@ const ProductDetails = () => {
     }
   ];
 
-  const product = products.find(p => p.id === productId);
+  const hiddenProductIds = new Set([
+    "aluminum-sheets",
+    "galvanized-sheets",
+    "corrugated-sheets",
+    "polycarbonate-sheets",
+  ]);
+
+  const product = products.find(
+    (p) => p.id === productId && !hiddenProductIds.has(p.id)
+  );
 
   const handleContact = () => {
     toast({

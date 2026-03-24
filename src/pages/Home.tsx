@@ -1,13 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, CheckCircle, Phone, MessageCircle, Users, Shield, Clock, Award, Star } from "lucide-react";
-import heroImage from "@/assets/hero-construction.jpg";
-import concreteProducts from "@/assets/concrete-products.jpg";
+import { Phone, MessageCircle, Shield, Clock, Star } from "lucide-react";
 import ProductCategories from "@/components/ProductCategories";
 import QuickOrder from "@/components/QuickOrder";
-import { heroVariants, heroItem, fadeInUp, fadeInLeft, fadeInRight, scaleIn, staggerContainer, staggerItem, cardHover, buttonVariants, pulse } from "@/lib/motion";
+import { heroVariants, heroItem, fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerItem, buttonVariants } from "@/lib/motion";
 const Home = () => {
   return <motion.div className="min-h-screen" initial="hidden" animate="visible" variants={heroVariants}>
       {/* Hero Section */}
@@ -198,38 +194,38 @@ const Home = () => {
         }
       }} />
 
-      {/* Roofing Solutions Section */}
+      {/* Concrete Solutions Section */}
       <motion.section className="py-20 bg-concrete-light" initial="hidden" whileInView="visible" viewport={{
       once: true
     }} variants={staggerContainer}>
         <div className="container mx-auto px-4">
           <motion.div className="text-center mb-16" variants={fadeInUp}>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Premium Roofing Solutions
+              Concrete Solutions Built for Site Performance
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Durable, weather-resistant roofing sheets that provide excellent protection 
-              and longevity for your construction projects.
+              Dependable precast and ready-mix products engineered to keep your projects moving
+              with strength, durability, and consistent quality.
             </p>
           </motion.div>
 
           <motion.div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" variants={staggerContainer}>
             {[{
             icon: Shield,
-            title: "Aluminum Sheets",
-            description: "Lightweight, corrosion-resistant sheets perfect for modern buildings."
-          }, {
-            icon: Users,
-            title: "Corrugated Sheets",
-            description: "Classic corrugated design offering excellent water drainage."
-          }, {
-            icon: Award,
-            title: "Tile Profile Sheets",
-            description: "Aesthetic appeal with the durability of metal roofing."
+            title: "Structural Blocks",
+            description: "Reliable hollow and solid blocks for residential, commercial, and industrial builds."
           }, {
             icon: Clock,
-            title: "Industrial Sheets",
-            description: "Heavy-duty sheets for warehouses and industrial applications."
+            title: "Fast Turnaround",
+            description: "Steady production and responsive dispatch to help crews stay on schedule."
+          }, {
+            icon: MessageCircle,
+            title: "Technical Support",
+            description: "Practical guidance on product selection, quantities, and project fit."
+          }, {
+            icon: Phone,
+            title: "Nationwide Supply",
+            description: "Concrete products and ready-mix support for projects across Ghana."
           }].map((item, index) => <motion.div key={item.title} className="bg-white p-6 rounded-lg shadow-md" variants={staggerItem} whileHover={{
             y: -8,
             boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
@@ -435,7 +431,7 @@ const Home = () => {
             initial: "K"
           }, {
             stars: 5,
-            quote: "Professional team and high-quality roofing sheets. The aluminum sheets we purchased have excellent durability and finish.",
+            quote: "Professional team and dependable service. The concrete products arrived on time and matched the project specifications perfectly.",
             name: "Ama Osei",
             role: "Architect, Kumasi",
             initial: "A"
