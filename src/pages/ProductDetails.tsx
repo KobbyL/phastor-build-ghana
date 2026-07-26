@@ -421,7 +421,7 @@ const ProductDetails = () => {
   const handleContact = () => {
     toast({
       title: "Contact Information",
-      description: "Please call us at +233 XX XXX XXXX or WhatsApp for more details.",
+      description: "Please call us at +233 55 256 0460 or WhatsApp for more details.",
     });
   };
 
@@ -551,13 +551,17 @@ const ProductDetails = () => {
             </div>
 
             <div className="flex gap-4">
-              <Button variant="outline" className="gap-2" onClick={handleContact}>
-                <MessageCircle className="h-4 w-4" />
-                WhatsApp Quote
+              <Button variant="outline" className="gap-2" asChild>
+                <a href={`https://wa.me/+233552560460?text=${encodeURIComponent(`Hello, I would like to request a quote for ${product.name}.`)}`} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp Quote
+                </a>
               </Button>
-              <Button variant="outline" className="gap-2" onClick={handleContact}>
-                <Phone className="h-4 w-4" />
-                Call Now
+              <Button variant="outline" className="gap-2" asChild>
+                <a href="tel:0552560460">
+                  <Phone className="h-4 w-4" />
+                  Call Now
+                </a>
               </Button>
               <Button variant="outline" className="gap-2">
                 <Download className="h-4 w-4" />
@@ -647,13 +651,17 @@ const ProductDetails = () => {
             Contact us today for competitive pricing and expert advice on {product.name}.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90" onClick={handleContact}>
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp Quote
+            <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90" asChild>
+              <a href={`https://wa.me/+233552560460?text=${encodeURIComponent(`Hello, I would like to request a quote for ${product.name}.`)}`} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp Quote
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={handleContact}>
-              <Phone className="h-5 w-5" />
-              Call Now
+            <Button size="lg" variant="outline" className="gap-2 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
+              <a href="tel:0552560460">
+                <Phone className="h-5 w-5" />
+                Call Now
+              </a>
             </Button>
             <Button size="lg" variant="ghost" className="gap-2 text-primary-foreground hover:bg-primary-foreground/10">
               <Download className="h-5 w-5" />
